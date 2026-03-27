@@ -132,79 +132,190 @@ export default function DashboardPage() {
               <h3 className="text-4xl md:text-5xl font-headline font-extrabold text-white tracking-tighter">Scalable Digital Solutions</h3>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Starter */}
-              <div className="bg-surface-container p-10 rounded-2xl flex flex-col hover:bg-surface-container-high transition-colors border border-outline-variant/10">
-                <div className="mb-8">
-                  <div className="text-on-surface-variant font-bold tracking-widest uppercase text-[10px] mb-4">Starter</div>
-                  <div className="text-4xl font-headline font-extrabold text-white">$4,900<span className="text-base font-normal text-on-surface-variant ml-2">/project</span></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {/* Basic Package */}
+              <div className="bg-surface-container p-8 rounded-2xl flex flex-col hover:bg-surface-container-high transition-colors border border-outline-variant/10">
+                <div className="mb-6">
+                  <div className="text-on-surface-variant font-bold tracking-widest uppercase text-[10px] mb-2">Starter Website</div>
+                  <div className="text-2xl font-headline font-extrabold text-white mb-2">Basic</div>
+                  <div className="text-lg text-primary font-bold">$2,500 – $5,000</div>
+                  <p className="text-xs text-on-surface-variant mt-3 leading-relaxed">Perfect for individuals or small businesses who need a simple online presence.</p>
                 </div>
-                <ul className="space-y-6 mb-12 flex-grow">
-                  <li className="flex items-center gap-3 text-on-surface-variant">
-                    <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-                    <span className="text-sm">5 Bespoke Pages</span>
+                <ul className="space-y-4 mb-8 flex-grow">
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Up to 3 pages (Home, About, Contact)</span>
                   </li>
-                  <li className="flex items-center gap-3 text-on-surface-variant">
-                    <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-                    <span className="text-sm">SEO Foundations</span>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Responsive design (mobile-friendly)</span>
                   </li>
-                  <li className="flex items-center gap-3 text-on-surface-variant">
-                    <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-                    <span className="text-sm">Mobile First Architecture</span>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Basic UI/UX design</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Contact form integration</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Basic SEO setup</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Fast loading speed</span>
                   </li>
                 </ul>
-                <button className="w-full py-4 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all">Select Package</button>
+                <div className="pt-4 border-t border-outline-variant/10 mb-8">
+                  <div className="text-[10px] font-bold text-white uppercase tracking-wider mb-3">Advantages</div>
+                  <ul className="space-y-2">
+                    <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Affordable for US small businesses</li>
+                    <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Quick turnaround (1–3 weeks)</li>
+                    <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Ideal for portfolios or simple profiles</li>
+                  </ul>
+                </div>
+                <button className="w-full py-3.5 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all mt-auto">Select Package</button>
               </div>
 
-              {/* Growth (Featured) */}
-              <div className="bg-surface-container-highest p-10 rounded-2xl flex flex-col relative overflow-hidden shadow-2xl scale-105 border border-primary/20">
-                <div className="absolute top-0 right-0 bg-primary text-on-primary text-[10px] font-black uppercase tracking-widest px-4 py-1.5 rounded-bl-xl">Most Popular</div>
-                <div className="mb-8">
-                  <div className="text-primary font-bold tracking-widest uppercase text-[10px] mb-4">Growth</div>
-                  <div className="text-4xl font-headline font-extrabold text-white">$9,500<span className="text-base font-normal text-on-surface-variant ml-2">/project</span></div>
+              {/* Standard Package (Featured) */}
+              <div className="bg-surface-container-highest p-8 rounded-2xl flex flex-col relative overflow-hidden shadow-2xl scale-100 lg:scale-105 border border-primary/20 z-10">
+                <div className="absolute top-0 right-0 bg-primary text-on-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-bl-xl">Popular</div>
+                <div className="mb-6">
+                  <div className="text-primary font-bold tracking-widest uppercase text-[10px] mb-2">Business Website</div>
+                  <div className="text-2xl font-headline font-extrabold text-white mb-2">Standard</div>
+                  <div className="text-lg text-primary font-bold">$6,000 – $12,000</div>
+                  <p className="text-xs text-on-surface mt-3 leading-relaxed">Designed for growing businesses that need a more professional and functional website.</p>
                 </div>
-                <ul className="space-y-6 mb-12 flex-grow">
-                  <li className="flex items-center gap-3 text-on-surface">
-                    <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                    <span className="text-sm">12 Custom Pages</span>
+                <ul className="space-y-4 mb-8 flex-grow">
+                  <li className="flex items-start gap-2 text-on-surface">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                    <span className="text-xs leading-tight">Up to 7 pages</span>
                   </li>
-                  <li className="flex items-center gap-3 text-on-surface">
-                    <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                    <span className="text-sm">CMS Integration</span>
+                  <li className="flex items-start gap-2 text-on-surface">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                    <span className="text-xs leading-tight">Custom UI/UX design</span>
                   </li>
-                  <li className="flex items-center gap-3 text-on-surface">
-                    <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                    <span className="text-sm">Custom Interactions</span>
+                  <li className="flex items-start gap-2 text-on-surface">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                    <span className="text-xs leading-tight">Responsive design (mobile & tablet)</span>
                   </li>
-                  <li className="flex items-center gap-3 text-on-surface">
-                    <span className="material-symbols-outlined text-primary text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
-                    <span className="text-sm">Priority Launch Support</span>
+                  <li className="flex items-start gap-2 text-on-surface">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                    <span className="text-xs leading-tight">CMS integration (WordPress / similar)</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                    <span className="text-xs leading-tight">SEO optimization</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                    <span className="text-xs leading-tight">Social media & Google Maps</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                    <span className="text-xs leading-tight">Basic performance optimization</span>
                   </li>
                 </ul>
-                <button className="w-full py-4 rounded-lg bg-primary text-on-primary font-bold tracking-widest uppercase text-[10px] hover:shadow-lg hover:shadow-primary/20 transition-all">Select Package</button>
+                <div className="pt-4 border-t border-primary/20 mb-8">
+                  <div className="text-[10px] font-bold text-white uppercase tracking-wider mb-3">Advantages</div>
+                  <ul className="space-y-2">
+                    <li className="text-[11px] text-on-surface flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary"></div>Professional business-level quality</li>
+                    <li className="text-[11px] text-on-surface flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary"></div>Easy content management</li>
+                    <li className="text-[11px] text-on-surface flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary"></div>Stronger SEO & online presence</li>
+                  </ul>
+                </div>
+                <button className="w-full py-3.5 rounded-lg bg-primary text-on-primary font-bold tracking-widest uppercase text-[10px] hover:shadow-lg hover:shadow-primary/20 transition-all mt-auto">Select Package</button>
               </div>
 
-              {/* Enterprise */}
-              <div className="bg-surface-container p-10 rounded-2xl flex flex-col hover:bg-surface-container-high transition-colors border border-outline-variant/10">
-                <div className="mb-8">
-                  <div className="text-on-surface-variant font-bold tracking-widest uppercase text-[10px] mb-4">Enterprise</div>
-                  <div className="text-4xl font-headline font-extrabold text-white">Custom<span className="text-base font-normal text-on-surface-variant ml-2">/starting</span></div>
+              {/* Premium Package */}
+              <div className="bg-surface-container p-8 rounded-2xl flex flex-col hover:bg-surface-container-high transition-colors border border-outline-variant/10">
+                <div className="mb-6">
+                  <div className="text-on-surface-variant font-bold tracking-widest uppercase text-[10px] mb-2">Advanced Website</div>
+                  <div className="text-2xl font-headline font-extrabold text-white mb-2">Premium</div>
+                  <div className="text-lg text-primary font-bold">$15,000 – $30,000+</div>
+                  <p className="text-xs text-on-surface-variant mt-3 leading-relaxed">Best for businesses that need advanced features and high performance.</p>
                 </div>
-                <ul className="space-y-6 mb-12 flex-grow">
-                  <li className="flex items-center gap-3 text-on-surface-variant">
-                    <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-                    <span className="text-sm">Unlimited Scale</span>
+                <ul className="space-y-4 mb-8 flex-grow">
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Unlimited pages & Fully custom design</span>
                   </li>
-                  <li className="flex items-center gap-3 text-on-surface-variant">
-                    <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-                    <span className="text-sm">Custom WebApp Development</span>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Advanced UI/UX</span>
                   </li>
-                  <li className="flex items-center gap-3 text-on-surface-variant">
-                    <span className="material-symbols-outlined text-primary text-lg">check_circle</span>
-                    <span className="text-sm">24/7 Concierge Tech Lead</span>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">CMS or custom admin dashboard</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">E-commerce functionality (optional)</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Payment gateway integration</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Advanced SEO & High performance</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">API integration</span>
                   </li>
                 </ul>
-                <button className="w-full py-4 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all">Select Package</button>
+                <div className="pt-4 border-t border-outline-variant/10 mb-8">
+                  <div className="text-[10px] font-bold text-white uppercase tracking-wider mb-3">Advantages</div>
+                  <ul className="space-y-2">
+                    <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Highly scalable</li>
+                    <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Enterprise-level features</li>
+                    <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Built for serious growth & revenue</li>
+                  </ul>
+                </div>
+                <button className="w-full py-3.5 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all mt-auto">Select Package</button>
+              </div>
+
+              {/* Custom Package */}
+              <div className="bg-surface-container p-8 rounded-2xl flex flex-col hover:bg-surface-container-high transition-colors border border-outline-variant/10">
+                <div className="mb-6">
+                  <div className="text-on-surface-variant font-bold tracking-widest uppercase text-[10px] mb-2">Tailored Solution</div>
+                  <div className="text-2xl font-headline font-extrabold text-white mb-2">Custom</div>
+                  <div className="text-lg text-primary font-bold">Custom Scope</div>
+                  <p className="text-xs text-on-surface-variant mt-3 leading-relaxed">For clients who want full control over the features and scope of their website.</p>
+                </div>
+                <ul className="space-y-4 mb-8 flex-grow">
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Fully customizable (you choose everything)</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Flexible design & functionality</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Optional integrations</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Scalable architecture</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-on-surface-variant">
+                    <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                    <span className="text-xs leading-tight">Consultation-based development</span>
+                  </li>
+                </ul>
+                <div className="pt-4 border-t border-outline-variant/10 mb-8">
+                  <div className="text-[10px] font-bold text-white uppercase tracking-wider mb-3">Advantages</div>
+                  <ul className="space-y-2">
+                    <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>100% tailored to client needs</li>
+                    <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Flexible scope & budget</li>
+                    <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Ideal for startups or SaaS</li>
+                  </ul>
+                </div>
+                <button className="w-full py-3.5 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all mt-auto">Talk to Us</button>
               </div>
             </div>
           </div>
