@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
 
 const NAV_LINKS = [
   { name: "Home", href: "#home" },
@@ -11,8 +12,11 @@ const NAV_LINKS = [
 ];
 
 export function Navbar() {
+  const { data: session, status } = useSession();
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,8 +29,6 @@ export function Navbar() {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Check if section is currently near top of viewport
-          // Using 200px offset as a buffer for the fixed header
           if (rect.top <= 200) {
             current = section;
           }
@@ -36,10 +38,21 @@ export function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Run once on mount
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Close dropdown on click outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -55,6 +68,10 @@ export function Navbar() {
       });
     }
   };
+
+  const userInitial = session?.user?.name
+    ? session.user.name.charAt(0).toUpperCase()
+    : "?";
 
   return (
     <nav 
@@ -98,12 +115,65 @@ export function Navbar() {
           })}
         </div>
         
-        <Link 
-          href="/login"
-          className="bg-primary text-on-primary font-bold px-7 py-2.5 rounded-full text-sm uppercase tracking-widest hover:shadow-xl hover:shadow-primary/30 hover:bg-primary/90 active:scale-95 transition-all"
-        >
-          Login
-        </Link>
+        {/* Auth Section */}
+        {status === "loading" ? (
+          <div className="w-10 h-10 rounded-full bg-surface-container-high/50 animate-pulse"></div>
+        ) : session?.user ? (
+          <div className="relative" ref={dropdownRef}>
+            <button
+              id="profile-avatar-btn"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+              className="w-10 h-10 rounded-full bg-[linear-gradient(135deg,#c3c0ff_0%,#4f46e5_100%)] flex items-center justify-center text-white font-bold text-sm uppercase cursor-pointer hover:shadow-lg hover:shadow-primary/30 hover:scale-105 active:scale-95 transition-all ring-2 ring-transparent hover:ring-primary/30"
+              aria-label="Open profile menu"
+            >
+              {userInitial}
+            </button>
+
+            {/* Dropdown Menu */}
+            {dropdownOpen && (
+              <div className="absolute right-0 top-full mt-3 w-72 bg-surface-container-high/95 backdrop-blur-2xl border border-outline-variant/20 rounded-2xl shadow-2xl shadow-black/30 overflow-hidden animate-in fade-in zoom-in-95 duration-200 origin-top-right">
+                {/* User Info */}
+                <div className="px-5 py-4 border-b border-outline-variant/15">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[linear-gradient(135deg,#c3c0ff_0%,#4f46e5_100%)] flex items-center justify-center text-white font-bold text-sm uppercase shrink-0">
+                      {userInitial}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="text-white font-bold text-sm truncate">
+                        {session.user.name || "User"}
+                      </div>
+                      <div className="text-on-surface-variant text-xs truncate">
+                        {session.user.email || ""}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Logout Button */}
+                <div className="p-2">
+                  <button
+                    id="logout-btn"
+                    onClick={() => {
+                      setDropdownOpen(false);
+                      signOut({ callbackUrl: "/dashboard" });
+                    }}
+                    className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-red-400 hover:bg-red-500/10 transition-colors text-sm font-semibold cursor-pointer"
+                  >
+                    <span className="material-symbols-outlined text-lg">logout</span>
+                    Logout
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <Link 
+            href="/login"
+            className="bg-primary text-on-primary font-bold px-7 py-2.5 rounded-full text-sm uppercase tracking-widest hover:shadow-xl hover:shadow-primary/30 hover:bg-primary/90 active:scale-95 transition-all"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </nav>
   );

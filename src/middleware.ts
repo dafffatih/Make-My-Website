@@ -5,7 +5,7 @@ import { authConfig } from '../auth.config';
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
-  const isProtectedRoute = req.nextUrl.pathname.startsWith('/dashboard') || req.nextUrl.pathname.startsWith('/chat');
+  const isProtectedRoute = req.nextUrl.pathname.startsWith('/chat');
   const isAuthRoute = req.nextUrl.pathname.startsWith('/login') || req.nextUrl.pathname.startsWith('/register');
 
   if (isProtectedRoute && !req.auth) {
