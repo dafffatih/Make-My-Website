@@ -1,50 +1,21 @@
+"use client";
+
+import { useState } from "react";
+import { Navbar } from "@/components/Navbar";
+
 export default function ChatPage() {
+  const [mobileView, setMobileView] = useState<"chat" | "project">("chat");
+
   return (
     <div className="h-screen overflow-hidden flex flex-col w-full">
       {/* TopNavBar */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-zinc-900/60 backdrop-blur-lg shadow-2xl shadow-black/20 h-20 flex justify-between items-center px-8 font-manrope antialiased tracking-tight">
-        <div className="flex items-center gap-8">
-          <span className="text-xl font-extrabold tracking-tighter text-zinc-50 dark:text-white">Make My Website</span>
-          <div className="hidden md:flex gap-6">
-            <a className="text-zinc-400 dark:text-zinc-500 hover:text-zinc-100 transition-all duration-300" href="#">Home</a>
-            <a className="text-zinc-400 dark:text-zinc-500 hover:text-zinc-100 transition-all duration-300" href="#">Portfolio</a>
-            <a className="text-zinc-400 dark:text-zinc-500 hover:text-zinc-100 transition-all duration-300" href="#">Services</a>
-            <a className="text-zinc-400 dark:text-zinc-500 hover:text-zinc-100 transition-all duration-300" href="#">Contact</a>
-          </div>
-        </div>
-        <div className="flex items-center gap-4">
-          <button className="bg-indigo-400 dark:bg-indigo-300 text-zinc-900 px-6 py-2 rounded-full font-bold active:scale-95 transform transition-transform text-sm">
-            Chat Now
-          </button>
-        </div>
-      </nav>
+      <Navbar />
 
       <main className="pt-20 flex-grow flex overflow-hidden">
         {/* Chat Interface */}
-        <section className="flex-grow flex flex-col bg-surface-dim relative">
-          {/* Chat Header */}
-          <div className="px-8 py-6 flex items-center justify-between bg-surface-container-low">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full overflow-hidden bg-primary-container flex items-center justify-center">
-                <img className="w-full h-full object-cover" data-alt="Portrait of a professional creative consultant with a warm smile, soft studio lighting, high-end photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAepOWZsIXCUs6pupAlKB-0Ija27a2_TgfQRZ-fOTVAU77_hCc3mRy6R0dW1C9ejtAmXSO1bt6FZ_CGTYcsTPe9Ld4ITcLkhNMtdvC-9ih2JE_sWBAGjf4tk_FGh0Vp2V63oxIpd3ZoSxFQqqu7ut2gwNExDgveoKShORcDcruXoK94h5PMuJ6yd7Rl3cuR1RyOEgQKQbyTbE-k3kFRy3I44W1GzPsRAYKOh_VbfYb5t4msaZ-FkiuX4kpMP9VknwzHfbYZwZrRjIg" />
-              </div>
-              <div>
-                <h2 className="font-headline font-bold text-lg text-on-surface">Julian Vance</h2>
-                <span className="text-label text-primary font-medium tracking-widest uppercase text-[10px]">Senior Digital Architect</span>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <button className="p-2 hover:bg-surface-container-high rounded-full transition-colors">
-                <span className="material-symbols-outlined text-on-surface-variant">search</span>
-              </button>
-              <button className="p-2 hover:bg-surface-container-high rounded-full transition-colors">
-                <span className="material-symbols-outlined text-on-surface-variant">more_vert</span>
-              </button>
-            </div>
-          </div>
-
+        <section className={`${mobileView === "chat" ? "flex" : "hidden"} md:flex w-full md:w-1/2 flex-col bg-surface-dim relative`}>
           {/* Message Area */}
-          <div className="flex-grow overflow-y-auto px-8 py-10 space-y-8 custom-scrollbar mb-[72px] md:mb-0">
+          <div className="flex-grow overflow-y-auto px-8 py-10 space-y-8 custom-scrollbar">
             {/* Admin Message */}
             <div className="flex gap-4 max-w-2xl">
               <div className="w-8 h-8 rounded-full bg-surface-container-highest flex-shrink-0 mt-1 overflow-hidden">
@@ -58,30 +29,6 @@ export default function ChatPage() {
               </div>
             </div>
 
-            {/* Package Selection Widget (Admin) */}
-            <div className="ml-12 max-w-2xl">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-surface-container-highest p-5 rounded-xl border border-outline-variant/20 hover:border-primary/40 transition-all group cursor-pointer">
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>architecture</span>
-                    <span className="text-xs font-bold text-primary">$2,499</span>
-                  </div>
-                  <h4 className="font-headline font-bold text-on-surface mb-1">Standard Architect</h4>
-                  <p className="text-xs text-on-surface-variant mb-4">5-page custom build with tailored interactions and SEO setup.</p>
-                  <button className="w-full py-2 bg-surface-container-low text-xs font-bold uppercase tracking-wider rounded group-hover:bg-primary group-hover:text-surface transition-colors">Select Tier</button>
-                </div>
-                <div className="bg-surface-container-highest p-5 rounded-xl border-2 border-primary shadow-xl shadow-primary/10 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 bg-primary text-surface text-[8px] font-black px-2 py-1 uppercase tracking-tighter">Most Popular</div>
-                  <div className="flex justify-between items-start mb-4">
-                    <span className="material-symbols-outlined text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>diamond</span>
-                    <span className="text-xs font-bold text-primary">$4,999</span>
-                  </div>
-                  <h4 className="font-headline font-bold text-on-surface mb-1">Elite Studio</h4>
-                  <p className="text-xs text-on-surface-variant mb-4">Full brand system, unlimited pages, and priority support.</p>
-                  <button className="w-full py-2 bg-primary text-surface text-xs font-bold uppercase tracking-wider rounded">Current Choice</button>
-                </div>
-              </div>
-            </div>
 
             {/* User Message */}
             <div className="flex flex-row-reverse gap-4 max-w-2xl ml-auto">
@@ -105,7 +52,7 @@ export default function ChatPage() {
           </div>
 
           {/* Input Area */}
-          <div className="p-8 bg-surface-container-low border-t border-outline-variant/5">
+          <div className="p-8 bg-surface-dim border-t border-outline-variant/5">
             <div className="relative flex items-center bg-surface-container-highest rounded-full px-6 py-3 border border-outline-variant/10 focus-within:border-primary/50 transition-all">
               <button className="p-1 text-on-surface-variant hover:text-primary transition-colors">
                 <span className="material-symbols-outlined">attach_file</span>
@@ -119,7 +66,7 @@ export default function ChatPage() {
         </section>
 
         {/* Consultation & Transaction Sidebar */}
-        <aside className="hidden lg:flex w-96 flex-col bg-surface-container-low border-l border-outline-variant/10 overflow-y-auto custom-scrollbar">
+        <aside className={`${mobileView === "project" ? "flex" : "hidden"} md:flex w-full md:w-1/2 flex-col bg-surface-container-low md:border-l border-outline-variant/10 overflow-y-auto custom-scrollbar`}>
           {/* Sidebar Header */}
           <div className="p-8 pb-4">
             <h3 className="font-headline font-extrabold text-2xl tracking-tighter text-on-surface">Consultation Hub</h3>
@@ -183,22 +130,24 @@ export default function ChatPage() {
       </main>
 
       {/* Footer Mobile View (Condensed) */}
-      <footer className="md:hidden fixed bottom-0 left-0 w-full bg-zinc-950 dark:bg-[#131313] py-4 px-8 grid grid-cols-4 border-t border-outline-variant/10 z-50">
-        <button className="flex flex-col items-center gap-1 text-indigo-400">
-          <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>chat</span>
+      <footer className="md:hidden w-full bg-zinc-950 dark:bg-[#131313] py-4 px-8 grid grid-cols-2 border-t border-outline-variant/30 z-50 shrink-0">
+        <button
+          onClick={() => setMobileView("chat")}
+          className={`flex flex-col items-center gap-1 transition-colors duration-200 ${
+            mobileView === "chat" ? "text-indigo-400" : "text-zinc-500"
+          }`}
+        >
+          <span className="material-symbols-outlined" style={{ fontVariationSettings: mobileView === "chat" ? "'FILL' 1" : "'FILL' 0" }}>chat</span>
           <span className="text-[8px] uppercase tracking-widest font-bold">Chat</span>
         </button>
-        <button className="flex flex-col items-center gap-1 text-zinc-500">
-          <span className="material-symbols-outlined">payments</span>
-          <span className="text-[8px] uppercase tracking-widest font-bold">Pay</span>
-        </button>
-        <button className="flex flex-col items-center gap-1 text-zinc-500">
-          <span className="material-symbols-outlined">event</span>
-          <span className="text-[8px] uppercase tracking-widest font-bold">Book</span>
-        </button>
-        <button className="flex flex-col items-center gap-1 text-zinc-500">
-          <span className="material-symbols-outlined">person</span>
-          <span className="text-[8px] uppercase tracking-widest font-bold">Account</span>
+        <button
+          onClick={() => setMobileView("project")}
+          className={`flex flex-col items-center gap-1 transition-colors duration-200 ${
+            mobileView === "project" ? "text-indigo-400" : "text-zinc-500"
+          }`}
+        >
+          <span className="material-symbols-outlined" style={{ fontVariationSettings: mobileView === "project" ? "'FILL' 1" : "'FILL' 0" }}>assignment</span>
+          <span className="text-[8px] uppercase tracking-widest font-bold">Project</span>
         </button>
       </footer>
     </div>

@@ -16,6 +16,7 @@ function LoginForm() {
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -36,7 +37,7 @@ function LoginForm() {
       if (res?.error) {
         setError("Invalid email or password");
       } else {
-        router.push("/dashboard");
+        router.push("/");
         router.refresh(); // Refresh state to update session
       }
     } catch (err) {
@@ -49,7 +50,7 @@ function LoginForm() {
   return (
     <div className="w-full max-w-md p-6 animate-in fade-in zoom-in-95 duration-700 ease-out z-10">
       <div className="flex flex-col items-center mb-10">
-        <Link href="/dashboard" className="flex items-center gap-3 group mb-8">
+        <Link href="/" className="flex items-center gap-3 group mb-8">
           <div className="w-10 h-10 rounded-xl bg-[linear-gradient(135deg,#c3c0ff_0%,#4f46e5_100%)] flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform">
             <span className="material-symbols-outlined text-white text-xl">public</span>
           </div>
@@ -90,15 +91,27 @@ function LoginForm() {
               <label className="text-sm font-bold text-on-surface-variant block" htmlFor="password">Password</label>
               <a href="#" className="text-xs text-primary font-bold hover:underline">Forgot password?</a>
             </div>
-            <input 
-              id="password"
-              type="password" 
-              placeholder="••••••••" 
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full bg-surface-container-high/50 border border-outline-variant/30 text-white px-4 py-3.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-outline"
-              required
-            />
+            <div className="relative">
+              <input 
+                id="password"
+                type={showPassword ? "text" : "password"} 
+                placeholder="••••••••" 
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full bg-surface-container-high/50 border border-outline-variant/30 text-white px-4 py-3.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 transition-all placeholder:text-outline pr-12"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-white transition-colors p-1"
+                tabIndex={-1}
+              >
+                <span className="material-symbols-outlined text-xl">
+                  {showPassword ? "visibility_off" : "visibility"}
+                </span>
+              </button>
+            </div>
           </div>
 
           <button 

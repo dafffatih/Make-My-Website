@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 
 const NAV_LINKS = [
@@ -13,35 +14,62 @@ const NAV_LINKS = [
 
 export function Navbar() {
   const { data: session, status } = useSession();
+  const pathname = usePathname();
+  const router = useRouter();
+  const isOnChat = pathname === "/chat";
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  // Scroll-spy only on dashboard
   useEffect(() => {
     const handleScroll = () => {
+      if (isOnChat) {
+        setScrolled(false);
+        return;
+      }
       setScrolled(window.scrollY > 20);
 
-      const sections = NAV_LINKS.map(link => link.href.substring(1));
-      let current = "home";
+      if (!isOnChat) {
+        const sections = NAV_LINKS.map(link => link.href.substring(1));
+        let current = "home";
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 200) {
-            current = section;
+        for (const section of sections) {
+          const element = document.getElementById(section);
+          if (element) {
+            const rect = element.getBoundingClientRect();
+            if (rect.top <= 200) {
+              current = section;
+            }
           }
         }
+        setActiveSection(current);
       }
-      setActiveSection(current);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isOnChat]);
+
+  // On dashboard: scroll to hash section after navigation
+  useEffect(() => {
+    if (!isOnChat && window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+      // Small delay to ensure DOM is ready
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          window.scrollTo({
+            top: targetId === "home" ? 0 : element.offsetTop - 80,
+            behavior: "smooth"
+          });
+        }
+      }, 100);
+    }
+  }, [isOnChat, pathname]);
 
   // Close dropdown on click outside
   useEffect(() => {
@@ -55,17 +83,22 @@ export function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement | HTMLDivElement>, href: string) => {
     e.preventDefault();
     const targetId = href.substring(1);
-    const element = document.getElementById(targetId);
 
-    if (element) {
-      const offsetTop = element.offsetTop;
-      window.scrollTo({
-        top: targetId === "home" ? 0 : offsetTop - 80,
-        behavior: "smooth"
-      });
+    if (isOnChat) {
+      // Navigate to dashboard with hash
+      router.push(`/${href}`);
+    } else {
+      const element = document.getElementById(targetId);
+      if (element) {
+        const offsetTop = element.offsetTop;
+        window.scrollTo({
+          top: targetId === "home" ? 0 : offsetTop - 80,
+          behavior: "smooth"
+        });
+      }
     }
   };
 
@@ -94,11 +127,11 @@ export function Navbar() {
         {/* Simple Navigation */}
         <div className="hidden md:flex items-center space-x-12">
           {NAV_LINKS.map((link) => {
-            const isActive = activeSection === link.href.substring(1);
+            const isActive = !isOnChat && activeSection === link.href.substring(1);
             return (
               <a
                 key={link.name}
-                href={link.href}
+                href={isOnChat ? `/${link.href}` : link.href}
                 onClick={(e) => handleClick(e, link.href)}
                 className={`relative pb-1 font-bold transition-colors duration-300 ${
                   isActive 
@@ -113,6 +146,24 @@ export function Navbar() {
               </a>
             );
           })}
+
+          {/* Vertical Divider */}
+          <div className="w-px h-5 bg-outline-variant/40"></div>
+
+          {/* Chat Link */}
+          <Link
+            href="/chat"
+            className={`relative pb-1 font-bold transition-colors duration-300 ${
+              isOnChat
+                ? "text-primary"
+                : "text-on-surface-variant hover:text-white"
+            }`}
+          >
+            Chat
+            {isOnChat && (
+              <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary rounded-full"></span>
+            )}
+          </Link>
         </div>
         
         {/* Auth Section */}
@@ -155,7 +206,7 @@ export function Navbar() {
                     id="logout-btn"
                     onClick={() => {
                       setDropdownOpen(false);
-                      signOut({ callbackUrl: "/dashboard" });
+                      signOut({ callbackUrl: "/" });
                     }}
                     className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-red-400 hover:bg-red-500/10 transition-colors text-sm font-semibold cursor-pointer"
                   >

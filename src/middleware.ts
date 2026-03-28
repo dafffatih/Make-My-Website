@@ -13,7 +13,7 @@ export default auth((req) => {
   }
 
   if (isAuthRoute && req.auth) {
-    return NextResponse.redirect(new URL('/dashboard', req.nextUrl));
+    return NextResponse.redirect(new URL('/', req.nextUrl));
   }
 
   return NextResponse.next();
