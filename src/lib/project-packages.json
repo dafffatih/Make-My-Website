@@ -1,0 +1,269 @@
+{
+  "forms": [
+    {
+      "package": "Landing Page",
+      "base_price": 500,
+      "currency": "USD",
+      "sections": [
+        {
+          "title": "Basic Information",
+          "fields": [
+            {"label": "Full Name", "type": "short_text"},
+            {"label": "Email Address", "type": "short_text"},
+            {"label": "Business / Brand Name", "type": "short_text"},
+            {"label": "Existing Website or Social Media Link", "type": "short_text"}
+          ]
+        },
+        {
+          "title": "Project Goal",
+          "fields": [
+            {
+              "label": "Main Goal",
+              "type": "select",
+              "options": ["Sell a product", "Generate leads", "Promote a service", "Event / campaign", "Other"]
+            },
+            {"label": "Goal Description", "type": "long_text"},
+            {"label": "Target Audience", "type": "long_text"},
+            {"label": "Key Message", "type": "long_text"}
+          ]
+        },
+        {
+          "title": "Content Availability",
+          "fields": [
+            {
+              "label": "Available Content",
+              "type": "multiselect",
+              "options": ["Copywriting", "Images", "Logo", "Branding guidelines"]
+            },
+            {
+              "label": "Need Content Help",
+              "type": "select",
+              "options": ["Yes", "No"]
+            }
+          ]
+        },
+        {
+          "title": "Design Preferences",
+          "fields": [
+            {"label": "Reference Websites", "type": "long_text"},
+            {
+              "label": "Design Style",
+              "type": "multiselect",
+              "options": ["Minimalist", "Modern", "Corporate", "Bold / Creative"]
+            }
+          ]
+        },
+        {
+          "title": "CTA",
+          "fields": [
+            {
+              "label": "Main CTA",
+              "type": "select",
+              "options": ["Contact form", "WhatsApp", "Email", "Purchase / Checkout"]
+            },
+            {"label": "Collected Information", "type": "long_text"}
+          ]
+        },
+        {
+          "title": "Add-ons",
+          "fields": [
+            {
+              "label": "Additional Features",
+              "type": "multiselect",
+              "options": [
+                {"name": "Extra Section", "price": 50},
+                {"name": "Copywriting", "price": 150},
+                {"name": "Stock Images", "price": 100},
+                {"name": "Advanced Animation", "price": 200},
+                {"name": "Multi-language", "price": 250},
+                {"name": "WhatsApp Integration", "price": 50},
+                {"name": "Email Marketing", "price": 150}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Timeline",
+          "fields": [
+            {"label": "Deadline", "type": "date"},
+            {
+              "label": "Urgency",
+              "type": "select",
+              "options": [
+                {"name": "Standard", "price": 0},
+                {"name": "Rush", "price": 200}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Additional Information",
+          "fields": [
+            {"label": "Additional Notes", "type": "long_text"},
+            {
+              "label": "Upload PRD",
+              "type": "file",
+              "accept": ["pdf", "docx", "png", "jpg"],
+              "max_size_mb": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "Basic",
+      "base_price": 2500,
+      "currency": "USD",
+      "sections": [
+        {
+          "title": "Basic Information",
+          "fields": [
+            {"label": "Full Name", "type": "short_text"},
+            {"label": "Email Address", "type": "short_text"},
+            {"label": "Business Name", "type": "short_text"}
+          ]
+        },
+        {
+          "title": "Business Info",
+          "fields": [
+            {"label": "Business Description", "type": "long_text"},
+            {"label": "Services", "type": "long_text"},
+            {"label": "Location", "type": "short_text"}
+          ]
+        },
+        {
+          "title": "Structure",
+          "fields": [
+            {
+              "label": "Pages",
+              "type": "multiselect",
+              "options": ["Home", "About", "Services", "Contact", "Other"]
+            },
+            {"label": "Extra Pages", "type": "short_text"}
+          ]
+        },
+        {
+          "title": "Add-ons",
+          "fields": [
+            {
+              "label": "Features",
+              "type": "multiselect",
+              "options": [
+                {"name": "Extra Page", "price": 300},
+                {"name": "Blog Setup", "price": 500},
+                {"name": "Copywriting", "price": 300},
+                {"name": "Advanced UI", "price": 800},
+                {"name": "Speed Optimization", "price": 300},
+                {"name": "Analytics", "price": 150}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Timeline",
+          "fields": [
+            {"label": "Deadline", "type": "date"},
+            {
+              "label": "Urgency",
+              "type": "select",
+              "options": [
+                {"name": "Standard", "price": 0},
+                {"name": "Rush", "price": 500}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Additional Information",
+          "fields": [
+            {"label": "Notes", "type": "long_text"},
+            {"label": "Upload PRD", "type": "file"}
+          ]
+        }
+      ]
+    },
+    {
+      "package": "Standard",
+      "base_price": 6000,
+      "currency": "USD",
+      "sections": [
+        {
+          "title": "Business",
+          "fields": [
+            {"label": "Description", "type": "long_text"},
+            {"label": "Branding", "type": "short_text"}
+          ]
+        },
+        {
+          "title": "Add-ons",
+          "fields": [
+            {
+              "label": "Features",
+              "type": "multiselect",
+              "options": [
+                {"name": "Extra Page", "price": 400},
+                {"name": "Advanced SEO", "price": 1000},
+                {"name": "Membership", "price": 1500}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Additional",
+          "fields": [
+            {"label": "Notes", "type": "long_text"},
+            {"label": "Upload PRD", "type": "file"}
+          ]
+        }
+      ]
+    },
+    {
+      "package": "Premium",
+      "base_price": 15000,
+      "currency": "USD",
+      "sections": [
+        {
+          "title": "Features",
+          "fields": [
+            {
+              "label": "System",
+              "type": "multiselect",
+              "options": [
+                {"name": "Auth", "price": 1000},
+                {"name": "Dashboard", "price": 2000}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Additional",
+          "fields": [
+            {"label": "Notes", "type": "long_text"},
+            {"label": "Upload PRD", "type": "file"}
+          ]
+        }
+      ]
+    },
+    {
+      "package": "Custom",
+      "base_price": 0,
+      "currency": "USD",
+      "sections": [
+        {
+          "title": "Project",
+          "fields": [
+            {"label": "Description", "type": "long_text"},
+            {"label": "Goal", "type": "long_text"}
+          ]
+        },
+        {
+          "title": "Additional",
+          "fields": [
+            {"label": "Notes", "type": "long_text"},
+            {"label": "Upload PRD", "type": "file"}
+          ]
+        }
+      ]
+    }
+  ]
+}

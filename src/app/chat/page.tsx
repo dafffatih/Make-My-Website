@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
+import ProjectManager from "@/components/chat/ProjectManager";
 
 export default function ChatPage() {
   const [mobileView, setMobileView] = useState<"chat" | "project">("chat");
@@ -66,61 +67,7 @@ export default function ChatPage() {
         </section>
 
         {/* Right Side - Project Progress */}
-        <aside className={`${mobileView === "project" ? "flex" : "hidden"} md:flex w-full md:w-1/2 flex-col bg-surface-container-low md:border-l border-outline-variant/10`}>
-          {/* Horizontal Progress Bar */}
-          <div className="w-full px-8 py-6 border-b border-outline-variant/10">
-
-            {/* Progress Track */}
-            <div className="relative flex items-center justify-between px-2">
-              {/* Background Track Line */}
-              <div className="absolute top-[14px] left-[calc(10%)] right-[calc(10%)] h-[2px] bg-surface-container-highest" />
-
-              {(() => {
-                const steps = [
-                  { label: "Project Setup", icon: "settings" },
-                  { label: "Deposit Payment", icon: "hourglass_top" },
-                  { label: "In Development", icon: "code" },
-                  { label: "Final Delivery", icon: "rocket_launch" },
-                  { label: "Revisions", icon: "edit_note" },
-                ];
-                const currentStep = 0; // 0-indexed, step 1 = Project Setup
-
-                return steps.map((step, i) => {
-                  const isCompleted = i < currentStep;
-                  const isActive = i === currentStep;
-                  const isUpcoming = i > currentStep;
-
-                  return (
-                    <div key={i} className="relative z-10 flex flex-col items-center flex-1">
-                      {/* Step Dot */}
-                      <div className={`
-                        w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300
-                        ${isCompleted ? 'bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(79,70,229,0.3)]' : ''}
-                        ${isActive ? 'bg-primary-container text-on-primary-container ring-[3px] ring-primary/30 shadow-[0_0_20px_rgba(79,70,229,0.4)]' : ''}
-                        ${isUpcoming ? 'bg-surface-container-highest text-on-surface-variant/40' : ''}
-                      `}>
-                        {isCompleted ? (
-                          <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
-                        ) : (
-                          <span className={`material-symbols-outlined text-[14px] ${isActive ? 'animate-pulse' : ''}`}>{step.icon}</span>
-                        )}
-                      </div>
-                      {/* Step Label */}
-                      <span className={`
-                        text-[9px] mt-2 text-center leading-tight font-medium tracking-wide whitespace-nowrap
-                        ${isCompleted ? 'text-primary' : ''}
-                        ${isActive ? 'text-on-surface font-bold' : ''}
-                        ${isUpcoming ? 'text-on-surface-variant/40' : ''}
-                      `}>
-                        {step.label}
-                      </span>
-                    </div>
-                  );
-                });
-              })()}
-            </div>
-          </div>
-        </aside>
+        <ProjectManager mobileView={mobileView} />
       </main>
 
       {/* Footer Mobile View (Condensed) */}
