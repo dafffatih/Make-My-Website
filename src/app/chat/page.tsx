@@ -65,65 +65,59 @@ export default function ChatPage() {
           </div>
         </section>
 
-        {/* Consultation & Transaction Sidebar */}
-        <aside className={`${mobileView === "project" ? "flex" : "hidden"} md:flex w-full md:w-1/2 flex-col bg-surface-container-low md:border-l border-outline-variant/10 overflow-y-auto custom-scrollbar`}>
-          {/* Sidebar Header */}
-          <div className="p-8 pb-4">
-            <h3 className="font-headline font-extrabold text-2xl tracking-tighter text-on-surface">Consultation Hub</h3>
-            <p className="text-xs text-on-surface-variant mt-2 uppercase tracking-widest">Manage your digital architecture</p>
-          </div>
+        {/* Right Side - Project Progress */}
+        <aside className={`${mobileView === "project" ? "flex" : "hidden"} md:flex w-full md:w-1/2 flex-col bg-surface-container-low md:border-l border-outline-variant/10`}>
+          {/* Horizontal Progress Bar */}
+          <div className="w-full px-8 py-6 border-b border-outline-variant/10">
 
-          {/* Selected Package Card */}
-          <div className="px-8 py-6">
-            <div className="bg-surface-container-high rounded-2xl p-6 border border-primary/20 relative overflow-hidden">
-              <div className="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
-              <span className="text-[10px] font-bold text-primary uppercase tracking-widest block mb-2">Active Selection</span>
-              <h4 className="font-headline font-bold text-xl text-on-surface">Elite Studio Tier</h4>
-              <div className="mt-4 flex items-baseline gap-2">
-                <span className="text-3xl font-black text-on-surface">$4,999</span>
-                <span className="text-xs text-on-surface-variant">USD / Total</span>
-              </div>
-              <ul className="mt-6 space-y-3">
-                <li className="flex items-center gap-3 text-xs text-on-surface-variant">
-                  <span className="material-symbols-outlined text-[16px] text-primary">check_circle</span>
-                  Full Brand Strategy
-                </li>
-                <li className="flex items-center gap-3 text-xs text-on-surface-variant">
-                  <span className="material-symbols-outlined text-[16px] text-primary">check_circle</span>
-                  Unlimited UI Revisions
-                </li>
-                <li className="flex items-center gap-3 text-xs text-on-surface-variant">
-                  <span className="material-symbols-outlined text-[16px] text-primary">check_circle</span>
-                  Dedicated Dev Server
-                </li>
-              </ul>
-            </div>
-          </div>
+            {/* Progress Track */}
+            <div className="relative flex items-center justify-between px-2">
+              {/* Background Track Line */}
+              <div className="absolute top-[14px] left-[calc(10%)] right-[calc(10%)] h-[2px] bg-surface-container-highest" />
 
-          {/* Action Buttons Area */}
-          <div className="px-8 pb-8 space-y-4">
-            <button className="w-full bg-gradient-to-br from-primary to-primary-container text-zinc-900 py-4 rounded-full font-bold uppercase text-xs tracking-widest shadow-xl shadow-primary/10 hover:brightness-110 active:scale-[0.98] transition-all">
-              Complete Payment
-            </button>
-            <button className="w-full bg-surface-container-highest text-on-surface py-4 rounded-full font-bold uppercase text-xs tracking-widest border border-outline-variant/20 hover:bg-surface-bright transition-all">
-              Book a Call
-            </button>
-          </div>
+              {(() => {
+                const steps = [
+                  { label: "Project Setup", icon: "settings" },
+                  { label: "Deposit Payment", icon: "hourglass_top" },
+                  { label: "In Development", icon: "code" },
+                  { label: "Final Delivery", icon: "rocket_launch" },
+                  { label: "Revisions", icon: "edit_note" },
+                ];
+                const currentStep = 0; // 0-indexed, step 1 = Project Setup
 
-          {/* Quick Links / Meta */}
-          <div className="mt-auto p-8 border-t border-outline-variant/10">
-            <div className="bg-surface-container-lowest p-4 rounded-xl">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="material-symbols-outlined text-primary text-xl">calendar_today</span>
-                <div>
-                  <p className="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Next Milestone</p>
-                  <p className="text-xs text-on-surface font-medium">Kickoff Discovery</p>
-                </div>
-              </div>
-              <div className="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
-                <div className="bg-primary w-1/4 h-full"></div>
-              </div>
-              <p className="text-[9px] text-on-surface-variant mt-2">Project progress: 25% complete</p>
+                return steps.map((step, i) => {
+                  const isCompleted = i < currentStep;
+                  const isActive = i === currentStep;
+                  const isUpcoming = i > currentStep;
+
+                  return (
+                    <div key={i} className="relative z-10 flex flex-col items-center flex-1">
+                      {/* Step Dot */}
+                      <div className={`
+                        w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300
+                        ${isCompleted ? 'bg-primary-container text-on-primary-container shadow-[0_0_12px_rgba(79,70,229,0.3)]' : ''}
+                        ${isActive ? 'bg-primary-container text-on-primary-container ring-[3px] ring-primary/30 shadow-[0_0_20px_rgba(79,70,229,0.4)]' : ''}
+                        ${isUpcoming ? 'bg-surface-container-highest text-on-surface-variant/40' : ''}
+                      `}>
+                        {isCompleted ? (
+                          <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
+                        ) : (
+                          <span className={`material-symbols-outlined text-[14px] ${isActive ? 'animate-pulse' : ''}`}>{step.icon}</span>
+                        )}
+                      </div>
+                      {/* Step Label */}
+                      <span className={`
+                        text-[9px] mt-2 text-center leading-tight font-medium tracking-wide whitespace-nowrap
+                        ${isCompleted ? 'text-primary' : ''}
+                        ${isActive ? 'text-on-surface font-bold' : ''}
+                        ${isUpcoming ? 'text-on-surface-variant/40' : ''}
+                      `}>
+                        {step.label}
+                      </span>
+                    </div>
+                  );
+                });
+              })()}
             </div>
           </div>
         </aside>

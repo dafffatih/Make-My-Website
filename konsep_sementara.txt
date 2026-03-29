@@ -1,0 +1,287 @@
+disini saya ingin menjelaskan konsep untuk bagian right side dari page chat:
+
+1. saat user pertama kali mengakses page chat, user akan disuruh memilih projek yang dia pesan, atau kalau dia belum ada projek yang dipesan di layar hanya memunculkan pilihan new project, untuk membuat dan memesan projek web baru
+2. setelah user memilih projeknya atau membuat projek barunya, user akan diarahkan ke laman dimana ada progress bar diatas, yang menginformasikan status projeknya sudah sampai mana, dan ketika user pertama kali membuat projeknya maka statusnya masih tahap pertama yaitu project setup, yang mana isinya user bisa memilih paket yang sesuai dengan tujuan websitenya dan mengisi form kebutuhan kebutuhan webnya
+3. selanjutnya setelah user memilih paket dan mengisi form projeknya dengan benar maka statusnya masuk ke tahap selanjutnya atau tahap ke-2 yatiu deposit payment, user akan diminta membayar deposit projeknya minimal sebesar 20% sampai maksimal 100% biaya pembuatan websitenya, jika user membayar 100% websitnya maka user akan melewati tahap ke-4 atau menyelesaikan pembayaran secara keseluruhan
+4. tahap ke-3 (in Development) user akan menunggu developer menyelesaikan websitnya, user akan diminta untuk memantau secara berkala laman ini untuk merespon developer ketika ada pertanyaan atau pilihan yang ditawarkan, dan nanti setelah pembuatannya selesai developer akan menampilkan hasilnya di laman ini, tetapi user belum bisa mengakses websitnya secara penuh karena belum di deploy
+5. tahap ke-4 User akan diminta melunaskan pembayaran projeknya ini dan user juga bisa merequest domain yang diinginkan (dengan biaya terpisah), setelah pembayaran tuntas user akan langsung mendeploy websitnya dan mengsetting domainnya yang dipesan, barulah user bisa mengakses websitnya secara full
+6. tahap ke-5 tahap revisi, dimana diawal user memilih paket yang tersedia terdapat fasilitas revisi yang jumlah revisinya sesuai dengan yang tertera pada paket yang dipilih, user bisa merevisi apapun pada websitenya (mulai dari merubah tulisan, mengganti desain, mengganti logo, dan sebagainya). Jadi user bisa menambahkan revisi sampai maksimal 20 revisi, dan ketika di submit maka tiket revisi akan berkurang 1, dan bisa melakukan submit revisi sampai jumlah jatah revisinya habis. Jika kuota revisinya habis user bisa melakukan pembelian tiket revisi tambahan.
+7. setelah semuanya selesai user bisa memesan website baru lagi dengan klik new projek, atau bahkan ketika 1 projek masih dalam proses pembuatan user tetap bisa memesan projek baru lainnya dengan klik new projek, dengan begitu user bisa memiliki lebih dari 1 projek yang masih dalam proses.
+
+
+
+
+dan berikut adalah isian form pada tahap 1 yang harus diisi user dalam text dengan format .json berikut ini:
+
+{
+  "forms": [
+    {
+      "package": "Landing Page",
+      "base_price": 500,
+      "currency": "USD",
+      "sections": [
+        {
+          "title": "Basic Information",
+          "fields": [
+            {"label": "Full Name", "type": "short_text"},
+            {"label": "Email Address", "type": "short_text"},
+            {"label": "Business / Brand Name", "type": "short_text"},
+            {"label": "Existing Website or Social Media Link", "type": "short_text"}
+          ]
+        },
+        {
+          "title": "Project Goal",
+          "fields": [
+            {
+              "label": "Main Goal",
+              "type": "select",
+              "options": ["Sell a product", "Generate leads", "Promote a service", "Event / campaign", "Other"]
+            },
+            {"label": "Goal Description", "type": "long_text"},
+            {"label": "Target Audience", "type": "long_text"},
+            {"label": "Key Message", "type": "long_text"}
+          ]
+        },
+        {
+          "title": "Content Availability",
+          "fields": [
+            {
+              "label": "Available Content",
+              "type": "multiselect",
+              "options": ["Copywriting", "Images", "Logo", "Branding guidelines"]
+            },
+            {
+              "label": "Need Content Help",
+              "type": "select",
+              "options": ["Yes", "No"]
+            }
+          ]
+        },
+        {
+          "title": "Design Preferences",
+          "fields": [
+            {"label": "Reference Websites", "type": "long_text"},
+            {
+              "label": "Design Style",
+              "type": "multiselect",
+              "options": ["Minimalist", "Modern", "Corporate", "Bold / Creative"]
+            }
+          ]
+        },
+        {
+          "title": "CTA",
+          "fields": [
+            {
+              "label": "Main CTA",
+              "type": "select",
+              "options": ["Contact form", "WhatsApp", "Email", "Purchase / Checkout"]
+            },
+            {"label": "Collected Information", "type": "long_text"}
+          ]
+        },
+        {
+          "title": "Add-ons",
+          "fields": [
+            {
+              "label": "Additional Features",
+              "type": "multiselect",
+              "options": [
+                {"name": "Extra Section", "price": 50},
+                {"name": "Copywriting", "price": 150},
+                {"name": "Stock Images", "price": 100},
+                {"name": "Advanced Animation", "price": 200},
+                {"name": "Multi-language", "price": 250},
+                {"name": "WhatsApp Integration", "price": 50},
+                {"name": "Email Marketing", "price": 150}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Timeline",
+          "fields": [
+            {"label": "Deadline", "type": "date"},
+            {
+              "label": "Urgency",
+              "type": "select",
+              "options": [
+                {"name": "Standard", "price": 0},
+                {"name": "Rush", "price": 200}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Additional Information",
+          "fields": [
+            {"label": "Additional Notes", "type": "long_text"},
+            {
+              "label": "Upload PRD",
+              "type": "file",
+              "accept": ["pdf", "docx", "png", "jpg"],
+              "max_size_mb": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "package": "Basic",
+      "base_price": 2500,
+      "currency": "USD",
+      "sections": [
+        {
+          "title": "Basic Information",
+          "fields": [
+            {"label": "Full Name", "type": "short_text"},
+            {"label": "Email Address", "type": "short_text"},
+            {"label": "Business Name", "type": "short_text"}
+          ]
+        },
+        {
+          "title": "Business Info",
+          "fields": [
+            {"label": "Business Description", "type": "long_text"},
+            {"label": "Services", "type": "long_text"},
+            {"label": "Location", "type": "short_text"}
+          ]
+        },
+        {
+          "title": "Structure",
+          "fields": [
+            {
+              "label": "Pages",
+              "type": "multiselect",
+              "options": ["Home", "About", "Services", "Contact", "Other"]
+            },
+            {"label": "Extra Pages", "type": "short_text"}
+          ]
+        },
+        {
+          "title": "Add-ons",
+          "fields": [
+            {
+              "label": "Features",
+              "type": "multiselect",
+              "options": [
+                {"name": "Extra Page", "price": 300},
+                {"name": "Blog Setup", "price": 500},
+                {"name": "Copywriting", "price": 300},
+                {"name": "Advanced UI", "price": 800},
+                {"name": "Speed Optimization", "price": 300},
+                {"name": "Analytics", "price": 150}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Timeline",
+          "fields": [
+            {"label": "Deadline", "type": "date"},
+            {
+              "label": "Urgency",
+              "type": "select",
+              "options": [
+                {"name": "Standard", "price": 0},
+                {"name": "Rush", "price": 500}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Additional Information",
+          "fields": [
+            {"label": "Notes", "type": "long_text"},
+            {"label": "Upload PRD", "type": "file"}
+          ]
+        }
+      ]
+    },
+    {
+      "package": "Standard",
+      "base_price": 6000,
+      "currency": "USD",
+      "sections": [
+        {
+          "title": "Business",
+          "fields": [
+            {"label": "Description", "type": "long_text"},
+            {"label": "Branding", "type": "short_text"}
+          ]
+        },
+        {
+          "title": "Add-ons",
+          "fields": [
+            {
+              "label": "Features",
+              "type": "multiselect",
+              "options": [
+                {"name": "Extra Page", "price": 400},
+                {"name": "Advanced SEO", "price": 1000},
+                {"name": "Membership", "price": 1500}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Additional",
+          "fields": [
+            {"label": "Notes", "type": "long_text"},
+            {"label": "Upload PRD", "type": "file"}
+          ]
+        }
+      ]
+    },
+    {
+      "package": "Premium",
+      "base_price": 15000,
+      "currency": "USD",
+      "sections": [
+        {
+          "title": "Features",
+          "fields": [
+            {
+              "label": "System",
+              "type": "multiselect",
+              "options": [
+                {"name": "Auth", "price": 1000},
+                {"name": "Dashboard", "price": 2000}
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Additional",
+          "fields": [
+            {"label": "Notes", "type": "long_text"},
+            {"label": "Upload PRD", "type": "file"}
+          ]
+        }
+      ]
+    },
+    {
+      "package": "Custom",
+      "base_price": 0,
+      "currency": "USD",
+      "sections": [
+        {
+          "title": "Project",
+          "fields": [
+            {"label": "Description", "type": "long_text"},
+            {"label": "Goal", "type": "long_text"}
+          ]
+        },
+        {
+          "title": "Additional",
+          "fields": [
+            {"label": "Notes", "type": "long_text"},
+            {"label": "Upload PRD", "type": "file"}
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
+dan saya meminta kamu untuk membuat semua itu dengan planning mode dan task yang terstruktur, dan gunakan mcp tools context7 untuk melihat dokumentasi terbaru

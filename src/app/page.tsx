@@ -1,4 +1,6 @@
+import Link from "next/link"
 import { Navbar } from "@/components/Navbar"
+import { ContactForm } from "@/components/ContactForm"
 import {
   Carousel,
   CarouselContent,
@@ -28,9 +30,9 @@ export default function Home() {
                 We don't just build websites; we engineer digital environments that command attention and foster elite user experiences.
               </p>
               <div className="flex flex-wrap gap-6">
-                <button className="px-8 py-4 rounded-full bg-[linear-gradient(135deg,#c3c0ff_0%,#4f46e5_100%)] text-white font-bold tracking-wide active:scale-95 transition-all shadow-xl shadow-primary/20">
+                <Link href="/chat" className="px-8 py-4 rounded-full bg-[linear-gradient(135deg,#c3c0ff_0%,#4f46e5_100%)] text-white font-bold tracking-wide active:scale-95 transition-all shadow-xl shadow-primary/20">
                   START A PROJECT
-                </button>
+                </Link>
                 <a 
                   href="#portfolio"
                   className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-outline-variant/20 hover:bg-white/5 text-on-surface font-bold tracking-wide active:scale-95 transition-all"
@@ -174,7 +176,7 @@ export default function Home() {
                         <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Ideal for testing ideas / ads</li>
                       </ul>
                     </div>
-                    <button className="w-full py-3.5 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all">Select Package</button>
+                    <Link href="/chat" className="block w-full py-3.5 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all text-center">Select Package</Link>
                   </div>
                 </CarouselItem>
 
@@ -221,7 +223,7 @@ export default function Home() {
                         <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Ideal for portfolios or simple profiles</li>
                       </ul>
                     </div>
-                    <button className="w-full py-3.5 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all">Select Package</button>
+                    <Link href="/chat" className="block w-full py-3.5 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all text-center">Select Package</Link>
                   </div>
                 </CarouselItem>
 
@@ -273,7 +275,7 @@ export default function Home() {
                         <li className="text-[11px] text-on-surface flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary"></div>Stronger SEO & online presence</li>
                       </ul>
                     </div>
-                    <button className="w-full py-3.5 rounded-lg bg-primary text-on-primary font-bold tracking-widest uppercase text-[10px] hover:shadow-lg hover:shadow-primary/20 transition-all">Select Package</button>
+                    <Link href="/chat" className="block w-full py-3.5 rounded-lg bg-primary text-on-primary font-bold tracking-widest uppercase text-[10px] hover:shadow-lg hover:shadow-primary/20 transition-all text-center">Select Package</Link>
                   </div>
                 </CarouselItem>
 
@@ -324,7 +326,7 @@ export default function Home() {
                         <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Built for serious growth & revenue</li>
                       </ul>
                     </div>
-                    <button className="w-full py-3.5 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all">Select Package</button>
+                    <Link href="/chat" className="block w-full py-3.5 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all text-center">Select Package</Link>
                   </div>
                 </CarouselItem>
 
@@ -367,7 +369,7 @@ export default function Home() {
                         <li className="text-[11px] text-on-surface-variant flex items-center gap-2"><div className="w-1 h-1 rounded-full bg-primary/50"></div>Ideal for startups or SaaS</li>
                       </ul>
                     </div>
-                    <button className="w-full py-3.5 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all">Talk to Us</button>
+                    <Link href="/chat" className="block w-full py-3.5 rounded-lg border border-outline-variant/30 text-white font-bold tracking-widest uppercase text-[10px] hover:bg-white/5 transition-all text-center">Talk to Us</Link>
                   </div>
                 </CarouselItem>
               </CarouselContent>
@@ -388,7 +390,7 @@ export default function Home() {
                 <h3 className="text-4xl font-headline font-extrabold text-white mb-8 tracking-tighter leading-tight">Ready to build your masterpiece? Let's talk.</h3>
                 <p className="text-on-surface-variant mb-12 max-w-md">Our team of architects is ready to map out your digital vision. Fill out the form or start a live session.</p>
                 <div className="space-y-8">
-                  <div className="flex items-center gap-6 p-6 rounded-2xl bg-surface-container hover:bg-surface-container-high transition-all">
+                  <Link href="/chat" className="flex items-center gap-6 p-6 rounded-2xl bg-surface-container hover:bg-surface-container-high transition-all cursor-pointer">
                     <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
                       <span className="material-symbols-outlined text-primary">chat_bubble</span>
                     </div>
@@ -396,7 +398,7 @@ export default function Home() {
                       <div className="text-white font-bold mb-1">Live Chat</div>
                       <div className="text-sm text-on-surface-variant">Average response: 2 minutes</div>
                     </div>
-                  </div>
+                  </Link>
                   <div className="flex items-center gap-6 p-6 rounded-2xl bg-surface-container hover:bg-surface-container-high transition-all">
                     <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
                       <span className="material-symbols-outlined text-primary">mail</span>
@@ -409,23 +411,7 @@ export default function Home() {
                 </div>
               </div>
               
-              <div className="bg-surface-container p-12 rounded-3xl border border-outline-variant/10 shadow-3xl">
-                <form action="#" className="space-y-8">
-                  <div className="group">
-                    <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors">Full Name</label>
-                    <input className="w-full bg-transparent border-0 border-b border-outline-variant/30 py-4 focus:ring-0 focus:border-primary text-white transition-all placeholder:text-zinc-700" placeholder="Alexander Graham" type="text" />
-                  </div>
-                  <div className="group">
-                    <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors">Business Email</label>
-                    <input className="w-full bg-transparent border-0 border-b border-outline-variant/30 py-4 focus:ring-0 focus:border-primary text-white transition-all placeholder:text-zinc-700" placeholder="alex@company.com" type="email" />
-                  </div>
-                  <div className="group">
-                    <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-on-surface-variant mb-2 group-focus-within:text-primary transition-colors">Project Brief</label>
-                    <textarea className="w-full bg-transparent border-0 border-b border-outline-variant/30 py-4 focus:ring-0 focus:border-primary text-white transition-all placeholder:text-zinc-700 resize-none" placeholder="Tell us about your digital ambition..." rows={4}></textarea>
-                  </div>
-                  <button className="w-full py-5 rounded-full bg-white text-black font-black tracking-widest uppercase text-xs hover:bg-primary hover:text-on-primary transition-all" type="submit">Send Brief</button>
-                </form>
-              </div>
+              <ContactForm />
             </div>
           </div>
         </section>
