@@ -16,9 +16,15 @@ model User {
   name      String?
   email     String?   @unique
   password  String?
+  role      String    @default("customer") // "admin" or "customer"
   projects  Project[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+
+  // Chat relations
+  sentMessages  Message[]      @relation("SentMessages")
+  conversations Conversation[] @relation("ConversationCustomer")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model ContactMessage {
@@ -30,26 +36,50 @@ model ContactMessage {
 }
 
 model Project {
-  id              String   @id @default(cuid())
-  userId          String
-  user            User     @relation(fields: [userId], references: [id])
-  name            String
-  package         String
-  status          Int      @default(1)
-  formDetails     Json?
-  
+  id         String @id @default(cuid())
+  userId     String
+  user       User   @relation(fields: [userId], references: [id])
+  name       String
+  package    String
+  status     Int    @default(1)
+  formDetails Json?
+
   // Cost breakdown
-  basePrice       Float    @default(0)
-  addonsPrice     Float    @default(0)
-  totalAmount     Float    @default(0)
-  amountPaid      Float    @default(0)
-  domainFee       Float    @default(0)
-  paidDomain      Boolean  @default(false)
+  basePrice   Float   @default(0)
+  addonsPrice Float   @default(0)
+  totalAmount Float   @default(0)
+  amountPaid  Float   @default(0)
+  domainFee   Float   @default(0)
+  paidDomain  Boolean @default(false)
 
   // Revisions
-  revisionTickets Int      @default(0)
-  maxRevisions    Int      @default(0)
-  
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  revisionTickets Int @default(0)
+  maxRevisions    Int @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Conversation {
+  id         String    @id @default(cuid())
+  customerId String
+  customer   User      @relation("ConversationCustomer", fields: [customerId], references: [id])
+  subject    String?
+  messages   Message[]
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  senderId       String
+  sender         User         @relation("SentMessages", fields: [senderId], references: [id])
+  content        String? // Text content (nullable for file-only messages)
+  fileUrl        String? // Path/URL to uploaded file
+  fileName       String? // Original filename
+  fileType       String? // MIME type
+  fileSize       Int? // Size in bytes
+  createdAt      DateTime     @default(now())
 }

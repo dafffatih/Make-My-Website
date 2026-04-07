@@ -6,11 +6,16 @@ import { usePathname, useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 
 const NAV_LINKS = [
-  { name: "Home", href: "#home" },
-  { name: "Portfolio", href: "#portfolio" },
-  { name: "Services", href: "#services" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home", href: "#home", scrollOffset: 0 },
+  { name: "Portfolio", href: "#portfolio", scrollOffset: -100 }, // Contoh: 10px ke atas
+  { name: "Services", href: "#services", scrollOffset: -100 }, // Contoh: 10px ke bawah
+  { name: "Contact", href: "#contact", scrollOffset: -100 },
 ];
+
+// ATUR POSISI DI SINI (dalam pixel)
+// Angka positif = tombol naik saat scroll
+// Angka negatif = tombol turun saat scroll
+const NAV_SCROLL_OFFSET = 4;
 
 export function Navbar() {
   const { data: session, status } = useSession();
@@ -62,8 +67,10 @@ export function Navbar() {
       setTimeout(() => {
         const element = document.getElementById(targetId);
         if (element) {
+          const link = NAV_LINKS.find(l => l.href === `#${targetId}`);
+          const specificOffset = link?.scrollOffset || 0;
           window.scrollTo({
-            top: targetId === "home" ? 0 : element.offsetTop - 80,
+            top: targetId === "home" ? 0 : element.offsetTop - (80 + specificOffset),
             behavior: "smooth"
           });
         }
@@ -94,8 +101,11 @@ export function Navbar() {
       const element = document.getElementById(targetId);
       if (element) {
         const offsetTop = element.offsetTop;
+        const link = NAV_LINKS.find(l => l.href === href);
+        const specificOffset = link?.scrollOffset || 0;
+        
         window.scrollTo({
-          top: targetId === "home" ? 0 : offsetTop - 80,
+          top: targetId === "home" ? 0 : offsetTop - (80 + specificOffset),
           behavior: "smooth"
         });
       }
@@ -133,11 +143,14 @@ export function Navbar() {
                 key={link.name}
                 href={isOnChat ? `/${link.href}` : link.href}
                 onClick={(e) => handleClick(e, link.href)}
-                className={`relative pb-1 font-bold transition-colors duration-300 ${
+                className={`relative pb-1 font-bold transition-all duration-500 ${
                   isActive 
                     ? "text-primary" 
                     : "text-on-surface-variant hover:text-white"
                 }`}
+                style={{
+                  transform: scrolled ? `translateY(-${NAV_SCROLL_OFFSET}px)` : 'translateY(0)'
+                }}
               >
                 {link.name}
                 {isActive && (
@@ -153,17 +166,36 @@ export function Navbar() {
           {/* Chat Link */}
           <Link
             href="/chat"
-            className={`relative pb-1 font-bold transition-colors duration-300 ${
+            className={`relative pb-1 font-bold transition-all duration-500 ${
               isOnChat
                 ? "text-primary"
                 : "text-on-surface-variant hover:text-white"
             }`}
+            style={{
+              transform: scrolled ? `translateY(-${NAV_SCROLL_OFFSET}px)` : 'translateY(0)'
+            }}
           >
             Chat
             {isOnChat && (
               <span className="absolute left-0 bottom-0 w-full h-[2px] bg-primary rounded-full"></span>
             )}
           </Link>
+
+          {/* Admin Link (Only for admins) */}
+          {session?.user?.role === "admin" && (
+            <>
+              <div className="w-px h-5 bg-outline-variant/40"></div>
+              <Link
+                href="/admin"
+                className={`relative pb-1 font-bold transition-all duration-500 text-purple-400 hover:text-purple-300`}
+                style={{
+                  transform: scrolled ? `translateY(-${NAV_SCROLL_OFFSET}px)` : 'translateY(0)'
+                }}
+              >
+                Admin Panel
+              </Link>
+            </>
+          )}
         </div>
         
         {/* Auth Section */}

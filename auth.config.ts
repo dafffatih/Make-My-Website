@@ -1,25 +1,43 @@
 import type { NextAuthConfig } from 'next-auth';
 
+declare module 'next-auth' {
+  interface User {
+    role?: string;
+  }
+  interface Session {
+    user: {
+      id?: string;
+      name?: string | null;
+      email?: string | null;
+      role?: string;
+    };
+  }
+}
+
 export const authConfig = {
   pages: {
     signIn: '/login',
   },
-  providers: [], // Diisi di auth.ts saja agar kompatibel dengan Edge Runtime
+  providers: [], // Filled in auth.ts only for Edge Runtime compatibility
   session: {
     strategy: 'jwt',
   },
   callbacks: {
     jwt({ token, user }) {
       if (user) {
-        token.name = user.name;
-        token.email = user.email;
+        (token as any).id = user.id;
+        (token as any).name = user.name;
+        (token as any).email = user.email;
+        (token as any).role = user.role;
       }
       return token;
     },
     session({ session, token }) {
       if (token) {
-        session.user.name = token.name as string;
-        session.user.email = token.email as string;
+        session.user.id = (token as any).id;
+        session.user.name = (token as any).name;
+        session.user.email = (token as any).email;
+        session.user.role = (token as any).role;
       }
       return session;
     },
