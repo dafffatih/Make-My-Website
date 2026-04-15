@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { processPayment, updateProjectStage } from "@/app/actions/project";
+import { Check, CheckCircle2, Lock, Rocket } from "lucide-react";
 
 const DOMAIN_FEE = 100;
 
@@ -85,7 +86,7 @@ export default function Stage4Finalize({ project, onPaymentComplete }: { project
                     checked={includeDomain}
                     onChange={(e) => setIncludeDomain(e.target.checked)}
                   />
-                  <span className="material-symbols-outlined text-[14px] text-white absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-0 peer-checked:opacity-100" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
+                  <Check className="absolute w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 pointer-events-none" />
                 </div>
                 <div className="flex-1">
                   <div className="flex justify-between text-sm font-bold text-white mb-1">
@@ -101,7 +102,7 @@ export default function Stage4Finalize({ project, onPaymentComplete }: { project
           {project.paidDomain && (
              <div className="pt-4 border-t border-outline-variant/10">
                 <div className="flex justify-between text-sm">
-                  <span className="text-on-surface-variant flex items-center gap-1"><span className="material-symbols-outlined text-[12px] text-green-400">check_circle</span> Domain Setup</span>
+                  <span className="text-on-surface-variant flex items-center gap-1"><CheckCircle2 className="w-3 h-3 text-green-400" /> Domain Setup</span>
                   <span className="text-green-400 font-medium">Paid (${project.domainFee})</span>
                 </div>
              </div>
@@ -129,7 +130,7 @@ export default function Stage4Finalize({ project, onPaymentComplete }: { project
               <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
             ) : (
               <>
-                Pay Balance ${finalCharge.toLocaleString()} <span className="material-symbols-outlined text-sm">lock</span>
+                Pay Balance ${finalCharge.toLocaleString()} <Lock className="w-4 h-4" />
               </>
             )}
           </button>
@@ -143,7 +144,7 @@ export default function Stage4Finalize({ project, onPaymentComplete }: { project
               <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
             ) : (
               <>
-                Deploy Website Now <span className="material-symbols-outlined text-sm">rocket_launch</span>
+                Deploy Website Now <Rocket className="w-4 h-4" />
               </>
             )}
           </button>

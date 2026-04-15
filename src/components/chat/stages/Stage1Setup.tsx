@@ -13,6 +13,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { 
+  CheckCircle2, 
+  ArrowRight 
+} from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -118,7 +122,7 @@ export default function Stage1Setup({ onProjectCreated }: { onProjectCreated: (p
     return z.object(shape);
   }, [selectedPkg]);
 
-  const { register, handleSubmit, control, formState: { errors }, watch, reset } = useForm({
+  const { register, handleSubmit, control, formState: { errors }, watch, reset } = useForm<any>({
     resolver: zodResolver(schema),
     defaultValues: {}
   });
@@ -188,8 +192,8 @@ export default function Stage1Setup({ onProjectCreated }: { onProjectCreated: (p
       sec.fields.forEach(f => {
         if (f.type === 'multiselect' && (f as any).options && typeof (f as any).options[0] === 'object') {
           const key = f.label.replace(/[^a-zA-Z0-9]/g, '_');
-          const selectedNames = currentValues[key] || [];
-          selectedNames.forEach((n: string) => {
+          const selectedNames = (currentValues as any)[key] || [];
+          (selectedNames as string[]).forEach((n: string) => {
             const opt = ((f as any).options as any[]).find(o => o.name === n);
             if (opt && opt.price) currAddonsPrice += opt.price;
           });
@@ -228,7 +232,7 @@ export default function Stage1Setup({ onProjectCreated }: { onProjectCreated: (p
                     <ul className="space-y-4 mb-8 flex-grow">
                       {details.features.map((feat: string, i: number) => (
                         <li key={i} className={`flex items-start gap-2 ${details.isPopular ? 'text-on-surface' : 'text-on-surface-variant'}`}>
-                          <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={details.isPopular ? { fontVariationSettings: "'FILL' 1"} : undefined}>check_circle</span>
+                          <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" fill={details.isPopular ? "currentColor" : "none"} />
                           <span className="text-xs leading-tight">{feat}</span>
                         </li>
                       ))}
@@ -266,11 +270,13 @@ export default function Stage1Setup({ onProjectCreated }: { onProjectCreated: (p
     );
   }
 
+  if (!selectedPkg) return null;
+
   return (
     <div className="p-8 pb-32">
       <div className="flex justify-between items-center mb-8">
         <div>
-          <h3 className="text-2xl font-black text-white">{selectedPkg.package} Setup</h3>
+          <h3 className="text-2xl font-black text-white">{selectedPkg?.package} Setup</h3>
           <p className="text-on-surface-variant text-sm mt-1">Please fill in the project requirements.</p>
         </div>
         <button 
@@ -419,7 +425,7 @@ export default function Stage1Setup({ onProjectCreated }: { onProjectCreated: (p
               <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
             ) : (
               <>
-                Submit Setup <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                Submit Setup <ArrowRight className="w-4 h-4" />
               </>
             )}
           </button>

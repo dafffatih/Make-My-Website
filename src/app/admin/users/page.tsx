@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { format } from "date-fns";
+import { UserPlus, Pencil, Trash2, X } from "lucide-react";
 
 type User = {
   id: string;
@@ -133,7 +134,7 @@ export default function AdminUsersPage() {
           onClick={() => handleOpenModal("create")}
           className="flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-xl font-bold hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95"
         >
-          <span className="material-symbols-outlined text-lg">person_add</span>
+          <UserPlus className="w-4 h-4" />
           Add User
         </button>
       </div>
@@ -189,14 +190,14 @@ export default function AdminUsersPage() {
                           className="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-white hover:bg-surface-container-highest transition-colors"
                           title="Edit User"
                         >
-                          <span className="material-symbols-outlined text-[18px]">edit</span>
+                          <Pencil className="w-4 h-4" />
                         </button>
                         <button
                           onClick={() => handleDelete(user.id, user.name)}
                           className="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-red-400 hover:bg-red-400/10 transition-colors"
                           title="Delete User"
                         >
-                          <span className="material-symbols-outlined text-[18px]">delete</span>
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </td>
@@ -224,7 +225,7 @@ export default function AdminUsersPage() {
                 {modalMode === "create" ? "Create New User" : "Edit User"}
               </h3>
               <button onClick={closeModal} className="text-on-surface-variant hover:text-white">
-                <span className="material-symbols-outlined">close</span>
+                <X className="w-5 h-5" />
               </button>
             </div>
             <form onSubmit={handleSubmit} className="p-6 space-y-4">

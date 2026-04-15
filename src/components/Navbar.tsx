@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
+import { Globe, LogOut } from "lucide-react";
 
 const NAV_LINKS = [
   { name: "Home", href: "#home", scrollOffset: 0 },
@@ -127,7 +128,7 @@ export function Navbar() {
       <div className={`flex justify-between items-center px-8 w-full max-w-screen-2xl mx-auto transition-all duration-500 ${scrolled ? 'h-[4.5rem]' : 'h-20'}`}>
         <div className="flex items-center gap-3 cursor-pointer group" onClick={(e) => handleClick(e as any, "#home")}>
           <div className="w-8 h-8 rounded-lg bg-[linear-gradient(135deg,#c3c0ff_0%,#4f46e5_100%)] flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform">
-            <span className="material-symbols-outlined text-white text-lg">public</span>
+            <Globe className="text-white w-5 h-5" />
           </div>
           <div className="text-xl font-extrabold tracking-tighter text-white">
             Make My Website
@@ -242,7 +243,7 @@ export function Navbar() {
                     }}
                     className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-red-400 hover:bg-red-500/10 transition-colors text-sm font-semibold cursor-pointer"
                   >
-                    <span className="material-symbols-outlined text-lg">logout</span>
+                    <LogOut className="w-4 h-4" />
                     Logout
                   </button>
                 </div>

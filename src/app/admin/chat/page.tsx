@@ -3,6 +3,17 @@
 import { useEffect, useState, useRef } from "react";
 import { format } from "date-fns";
 import { useSession } from "next-auth/react";
+import { 
+  Search, 
+  MessageSquare, 
+  FileText, 
+  MoreVertical, 
+  Pencil, 
+  Trash2, 
+  Paperclip, 
+  Send, 
+  MessageCircle 
+} from "lucide-react";
 
 type Conversation = {
   id: string;
@@ -27,6 +38,9 @@ export default function AdminChatPage() {
   const [loading, setLoading] = useState(true);
   const [inputMessage, setInputMessage] = useState("");
   const [isUploading, setIsUploading] = useState(false);
+  const [optionsMenuId, setOptionsMenuId] = useState<string | null>(null);
+  const [editingMsgId, setEditingMsgId] = useState<string | null>(null);
+  const [editContent, setEditContent] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -118,6 +132,34 @@ export default function AdminChatPage() {
     }
   };
 
+  const handleDeleteMessage = async (msgId: string) => {
+    if (!confirm("Are you sure you want to delete this message?")) return;
+    try {
+      const res = await fetch(`/api/chat/messages/${msgId}`, { method: "DELETE" });
+      if (!res.ok) throw new Error("Failed to delete message");
+      setMessages(prev => prev.filter(m => m.id !== msgId));
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
+
+  const saveEditMessage = async (msgId: string) => {
+    if (!editContent.trim()) return;
+    try {
+      setMessages(prev => prev.map(m => m.id === msgId ? { ...m, content: editContent } : m));
+      setEditingMsgId(null);
+      const res = await fetch(`/api/chat/messages/${msgId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: editContent })
+      });
+      if (!res.ok) throw new Error("Failed to edit message");
+    } catch (err: any) {
+      alert(err.message);
+      if (activeConversationId) fetchMessages(activeConversationId);
+    }
+  };
+
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -164,7 +206,7 @@ export default function AdminChatPage() {
         <div className="p-4 border-b border-outline-variant/10">
           <h2 className="text-lg font-bold text-white">Inbox</h2>
           <div className="relative mt-3">
-            <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant w-5 h-5" />
             <input 
               type="text" 
               placeholder="Search customers..." 
@@ -181,7 +223,7 @@ export default function AdminChatPage() {
             </div>
           ) : conversations.length === 0 ? (
             <div className="p-8 text-center text-on-surface-variant text-sm flex flex-col items-center">
-              <span className="material-symbols-outlined text-4xl mb-2 opacity-50">forum</span>
+              <MessageSquare className="w-10 h-10 mb-2 opacity-50" />
               No active conversations
             </div>
           ) : (
@@ -245,7 +287,7 @@ export default function AdminChatPage() {
             <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar bg-[url('/noise.png')]">
               {messages.length === 0 ? (
                 <div className="h-full flex flex-col items-center justify-center text-on-surface-variant opacity-70">
-                  <span className="material-symbols-outlined text-5xl mb-4">forum</span>
+                  <MessageSquare className="w-12 h-12 mb-4" />
                   <p>Message history will appear here</p>
                 </div>
               ) : (
@@ -253,11 +295,11 @@ export default function AdminChatPage() {
                   const isAdmin = msg.sender.role === 'admin';
                   
                   return (
-                    <div key={msg.id || i} className={`flex gap-4 max-w-2xl ${isAdmin ? "ml-auto flex-row-reverse" : ""}`}>
+                    <div key={msg.id || i} className={`group flex gap-4 max-w-2xl ${isAdmin ? "ml-auto flex-row-reverse" : ""}`}>
                       <div className={`w-8 h-8 rounded-full flex-shrink-0 mt-1 flex items-center justify-center font-bold text-xs ${
                         isAdmin 
-                          ? "bg-[linear-gradient(135deg,#c3c0ff_0%,#4f46e5_100%)] text-white" 
-                          : "bg-surface-container-highest text-on-surface"
+                          ? "bg-[linear-gradient(135deg,#c3c0ff_0%,#4f46e5_100%)] text-white shadow-lg" 
+                          : "bg-primary-container text-on-primary-container"
                       }`}>
                         {isAdmin ? "A" : (msg.sender.name?.charAt(0)?.toUpperCase() || "?")}
                       </div>
@@ -272,7 +314,7 @@ export default function AdminChatPage() {
                               </a>
                             ) : (
                               <a href={msg.fileUrl} target="_blank" rel="noreferrer" className="flex items-center gap-3 p-3 hover:bg-surface-container-highest transition-colors">
-                                <span className="material-symbols-outlined text-primary text-3xl">description</span>
+                                <FileText className="text-primary w-8 h-8" />
                                 <div className="text-left">
                                   <div className="text-sm font-semibold text-white truncate max-w-[200px]">{msg.fileName}</div>
                                   <div className="text-xs text-on-surface-variant">
@@ -285,20 +327,90 @@ export default function AdminChatPage() {
                         )}
                         
                         {/* Text Content */}
-                        {msg.content && (
-                          <div className={`p-4 rounded-2xl text-[15px] leading-relaxed shadow-sm ${
-                            isAdmin 
-                              ? "bg-primary text-on-primary rounded-tr-sm" 
-                              : "bg-surface-container-high text-on-surface rounded-tl-sm border border-outline-variant/5"
-                          }`}>
-                            {msg.content}
+                        {editingMsgId === msg.id ? (
+                          <div className="w-full flex flex-col gap-2 bg-surface-container-high p-3 rounded-2xl border border-outline-variant/20">
+                            <textarea 
+                              value={editContent} 
+                              onChange={(e) => setEditContent(e.target.value)}
+                              className="bg-transparent border-none text-white text-sm outline-none resize-none focus:ring-0 custom-scrollbar"
+                              rows={3}
+                              autoFocus
+                            />
+                            <div className="flex justify-end gap-2">
+                              <button onClick={() => setEditingMsgId(null)} className="text-xs font-semibold px-3 py-1.5 text-on-surface-variant hover:text-white transition-colors">Cancel</button>
+                              <button onClick={() => saveEditMessage(msg.id)} className="text-xs font-bold px-3 py-1.5 bg-primary text-on-primary rounded-lg hover:bg-primary/90 transition-colors">Save</button>
+                            </div>
                           </div>
+                        ) : (
+                          msg.content && (
+                            <div className={`p-4 rounded-2xl text-[15px] leading-relaxed shadow-sm ${
+                              isAdmin 
+                                ? "bg-primary text-on-primary rounded-tr-sm" 
+                                : "bg-surface-container-high text-on-surface rounded-tl-sm border border-outline-variant/5"
+                            }`}>
+                              {msg.content}
+                            </div>
+                          )
                         )}
                         
                         <div className="text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold px-1">
                           {format(new Date(msg.createdAt), "HH:mm")}
                         </div>
                       </div>
+                      
+                      {/* More Options Menu (Only for Own Messages) */}
+                      {isAdmin && !msg.id?.startsWith('temp-') && (
+                        <div className={`relative flex items-center justify-center transition-opacity self-center mb-4 ${optionsMenuId === msg.id ? "opacity-100 z-50" : "opacity-0 group-hover:opacity-100"}`}>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setOptionsMenuId(optionsMenuId === msg.id ? null : msg.id);
+                            }}
+                            className="w-8 h-8 rounded-full flex items-center justify-center text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors"
+                          >
+                            <MoreVertical className="w-4 h-4" />
+                          </button>
+                          
+                          {optionsMenuId === msg.id && (
+                            <>
+                              <div 
+                                className="fixed inset-0 z-40" 
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setOptionsMenuId(null);
+                                }}
+                              />
+                              <div className="absolute top-10 right-0 w-32 bg-surface-container-high border border-outline-variant/20 rounded-xl shadow-xl z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-100 origin-top-right">
+                              {!msg.fileUrl && (
+                                  <button 
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      setEditContent(msg.content);
+                                      setEditingMsgId(msg.id);
+                                      setOptionsMenuId(null);
+                                    }}
+                                    className="w-full flex items-center gap-2 px-3 py-2 text-sm text-white hover:bg-surface-container-highest transition-colors text-left"
+                                  >
+                                    <Pencil className="w-4 h-4" />
+                                    Edit
+                                  </button>
+                              )}
+                                <button 
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleDeleteMessage(msg.id);
+                                    setOptionsMenuId(null);
+                                  }}
+                                  className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-400 hover:bg-red-500/10 transition-colors text-left"
+                                  >
+                                  <Trash2 className="w-4 h-4" />
+                                  Delete
+                                </button>
+                            </div>
+                          </>
+                          )}
+                        </div>
+                      )}
                     </div>
                   );
                 })
@@ -329,7 +441,7 @@ export default function AdminChatPage() {
                     {isUploading ? (
                       <div className="w-5 h-5 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
                     ) : (
-                      <span className="material-symbols-outlined text-[22px]">attach_file</span>
+                      <Paperclip className="w-5 h-5" />
                     )}
                   </button>
                 </div>
@@ -354,7 +466,7 @@ export default function AdminChatPage() {
                     disabled={!inputMessage.trim() && !isUploading}
                     className="w-10 h-10 bg-primary text-on-primary rounded-full flex items-center justify-center hover:shadow-lg hover:shadow-primary/30 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
                   >
-                    <span className="material-symbols-outlined text-[20px]" style={{ fontVariationSettings: "'FILL' 1" }}>send</span>
+                    <Send className="w-5 h-5" fill="currentColor" />
                   </button>
                 </div>
               </form>
@@ -362,7 +474,7 @@ export default function AdminChatPage() {
           </>
         ) : (
           <div className="h-full flex flex-col items-center justify-center text-on-surface-variant opacity-70">
-            <span className="material-symbols-outlined text-6xl mb-4 text-outline-variant/30">chat</span>
+            <MessageCircle className="w-16 h-16 mb-4 text-outline-variant/30" />
             <p className="text-lg font-medium">Select a conversation</p>
             <p className="text-sm">Choose a customer from the left sidebar to start chatting</p>
           </div>

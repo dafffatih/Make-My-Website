@@ -32,7 +32,6 @@ export default function RootLayout({
       className={cn("dark", "h-full", "antialiased", inter.variable, manrope.variable, "font-sans", geist.variable)}
     >
       <head>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-full flex flex-col font-body bg-background text-on-background selection:bg-primary selection:text-on-primary">
         <Providers>

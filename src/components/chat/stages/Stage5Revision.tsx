@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { submitRevision } from "@/app/actions/project";
+import { Send } from "lucide-react";
 
 export default function Stage5Revision({ project, onRevisionSubmit }: { project: any, onRevisionSubmit: () => void }) {
   const [loading, setLoading] = useState(false);
@@ -128,7 +129,7 @@ export default function Stage5Revision({ project, onRevisionSubmit }: { project:
                      <div className="w-5 h-5 border-2 border-black border-t-transparent rounded-full animate-spin"></div>
                   ) : (
                      <>
-                        Use 1 Ticket <span className="material-symbols-outlined text-sm">send</span>
+                        Use 1 Ticket <Send className="w-4 h-4" />
                      </>
                   )}
                </button>

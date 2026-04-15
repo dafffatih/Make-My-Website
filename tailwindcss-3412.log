@@ -1,0 +1,97 @@
+2026-04-07T04:04:15.855960Z  INFO tailwindcss_oxide::scanner: Provided sources:
+2026-04-07T04:04:15.856484Z  INFO tailwindcss_oxide::scanner: Source: PublicSourceEntry { base: "D:\\001BERKAS\\Ngoding\\Freelance\\make my website", pattern: "**/*", negated: false }
+2026-04-07T04:04:15.857216Z  INFO tailwindcss_oxide::scanner: Optimized sources:
+2026-04-07T04:04:15.857244Z  INFO tailwindcss_oxide::scanner: Source: Auto { base: "D:\\001BERKAS\\Ngoding\\Freelance\\make my website" }
+2026-04-07T04:04:15.858874Z  INFO discover_sources: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.858907Z  INFO discover_sources:walk_synchronous: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.865961Z  INFO discover_sources:walk_synchronous: tailwindcss_oxide::scanner: exit
+2026-04-07T04:04:15.866638Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\AGENTS.md"
+2026-04-07T04:04:15.866720Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\auth.config.ts"
+2026-04-07T04:04:15.866729Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\ui\\carousel.tsx"
+2026-04-07T04:04:15.866761Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\auth.ts"
+2026-04-07T04:04:15.866787Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\ui\\checkbox.tsx"
+2026-04-07T04:04:15.866780Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\chat\\page.tsx"
+2026-04-07T04:04:15.866800Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\CLAUDE.md"
+2026-04-07T04:04:15.866828Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\ui\\field.tsx"
+2026-04-07T04:04:15.866840Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\components.json"
+2026-04-07T04:04:15.866862Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\ui\\input.tsx"
+2026-04-07T04:04:15.866877Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\layout.tsx"
+2026-04-07T04:04:15.866880Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\eslint.config.mjs"
+2026-04-07T04:04:15.866896Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\ui\\label.tsx"
+2026-04-07T04:04:15.866922Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\konsep_sementara.txt"
+2026-04-07T04:04:15.866926Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\login\\page.tsx"
+2026-04-07T04:04:15.866931Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\ui\\select.tsx"
+2026-04-07T04:04:15.866937Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\chat\\stages\\Stage1Setup.tsx"
+2026-04-07T04:04:15.866965Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\ui\\separator.tsx"
+2026-04-07T04:04:15.866970Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\page.tsx"
+2026-04-07T04:04:15.866970Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\next.config.ts"
+2026-04-07T04:04:15.866998Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\ui\\textarea.tsx"
+2026-04-07T04:04:15.867010Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\register\\page.tsx"
+2026-04-07T04:04:15.867016Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\package.json"
+2026-04-07T04:04:15.867047Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\chat\\ProjectManager.tsx"
+2026-04-07T04:04:15.867034Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\lib\\prisma.ts"
+2026-04-07T04:04:15.867059Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\chat\\stages\\Stage2Payment.tsx"
+2026-04-07T04:04:15.867086Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\chat\\ProjectProgressPanel.tsx"
+2026-04-07T04:04:15.867094Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\postcss.config.mjs"
+2026-04-07T04:04:15.867098Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\lib\\project-packages.json"
+2026-04-07T04:04:15.867129Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\chat\\ProjectSelector.tsx"
+2026-04-07T04:04:15.867133Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\prisma\\schema.prisma"
+2026-04-07T04:04:15.867150Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\lib\\supabase.ts"
+2026-04-07T04:04:15.867152Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\chat\\stages\\Stage3Development.tsx"
+2026-04-07T04:04:15.867181Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\prisma\\seed.ts"
+2026-04-07T04:04:15.867187Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\lib\\utils.ts"
+2026-04-07T04:04:15.867233Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\stitch_chatting_page\\stitch_chatting_page\\chatting_page\\code.html"
+2026-04-07T04:04:15.867239Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\chat\\stages\\Stage4Finalize.tsx"
+2026-04-07T04:04:15.867254Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\stitch_chatting_page\\stitch_chatting_page\\dashboard_landing_page_fixed\\code.html"
+2026-04-07T04:04:15.867277Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\Navbar.tsx"
+2026-04-07T04:04:15.867274Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\prisma.config.ts"
+2026-04-07T04:04:15.867315Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\Providers.tsx"
+2026-04-07T04:04:15.867353Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\tsconfig.json"
+2026-04-07T04:04:15.867357Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\ui\\button.tsx"
+2026-04-07T04:04:15.867382Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\api\\admin\\users\\route.ts"
+2026-04-07T04:04:15.867399Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\api\\chat\\conversations\\route.ts"
+2026-04-07T04:04:15.867415Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\stitch_chatting_page\\stitch_chatting_page\\obsidian_electric\\DESIGN.md"
+2026-04-07T04:04:15.867418Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\api\\chat\\messages\\[id]\\route.ts"
+2026-04-07T04:04:15.867427Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\public\\file.svg"
+2026-04-07T04:04:15.867445Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\api\\chat\\messages\\route.ts"
+2026-04-07T04:04:15.867536Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\api\\admin\\users\\[id]\\route.ts"
+2026-04-07T04:04:15.867566Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\api\\auth\\register\\route.ts"
+2026-04-07T04:04:15.867578Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\admin\\chat\\page.tsx"
+2026-04-07T04:04:15.867466Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\api\\chat\\upload\\route.ts"
+2026-04-07T04:04:15.867618Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\admin\\layout.tsx"
+2026-04-07T04:04:15.867520Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\middleware.ts"
+2026-04-07T04:04:15.867607Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\api\\auth\\[...nextauth]\\route.ts"
+2026-04-07T04:04:15.867257Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\public\\vercel.svg"
+2026-04-07T04:04:15.867668Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\admin\\users\\page.tsx"
+2026-04-07T04:04:15.867666Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\admin\\page.tsx"
+2026-04-07T04:04:15.867459Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\api\\contact\\route.ts"
+2026-04-07T04:04:15.867660Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\README.md"
+2026-04-07T04:04:15.867668Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\public\\globe.svg"
+2026-04-07T04:04:15.867259Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\chat\\stages\\Stage5Revision.tsx"
+2026-04-07T04:04:15.867726Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\public\\next.svg"
+2026-04-07T04:04:15.867688Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\components\\ContactForm.tsx"
+2026-04-07T04:04:15.867736Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\actions\\project.ts"
+2026-04-07T04:04:15.867781Z  INFO tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\public\\window.svg"
+2026-04-07T04:04:15.867833Z  INFO discover_sources: tailwindcss_oxide::scanner: exit
+2026-04-07T04:04:15.867844Z  INFO extract_candidates: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.867847Z  INFO extract_candidates:parse_all_blobs: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.867852Z  INFO extract_candidates:parse_all_blobs:extract: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.869343Z  INFO extract_candidates:parse_all_blobs:extract: tailwindcss_oxide::scanner: exit
+2026-04-07T04:04:15.869410Z  INFO extract_candidates:parse_all_blobs: tailwindcss_oxide::scanner: exit
+2026-04-07T04:04:15.869424Z  INFO extract_candidates:read_all_files: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.869428Z  INFO extract_candidates:read_all_files: tailwindcss_oxide::scanner: Reading 1 file(s)
+2026-04-07T04:04:15.869494Z  INFO extract_candidates:read_all_files: tailwindcss_oxide::scanner: Reading "D:\\001BERKAS\\Ngoding\\Freelance\\make my website\\src\\app\\globals.css"
+2026-04-07T04:04:15.869500Z  INFO extract_candidates:read_all_files: tailwindcss_oxide::scanner: exit
+2026-04-07T04:04:15.869506Z  INFO extract_candidates:extract_css_variables: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.869511Z  INFO extract_candidates:extract_css_variables:extract: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.869676Z  INFO extract_candidates:extract_css_variables:extract: tailwindcss_oxide::scanner: exit
+2026-04-07T04:04:15.869687Z  INFO extract_candidates:extract_css_variables: tailwindcss_oxide::scanner: exit
+2026-04-07T04:04:15.870134Z  INFO extract_candidates: tailwindcss_oxide::scanner: exit
+2026-04-07T04:04:15.870897Z  INFO get_files: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.870907Z  INFO get_files:discover_sources: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.870910Z  INFO get_files:discover_sources: tailwindcss_oxide::scanner: exit
+2026-04-07T04:04:15.871145Z  INFO get_files: tailwindcss_oxide::scanner: exit
+2026-04-07T04:04:15.871489Z  INFO get_globs: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.871495Z  INFO get_globs:discover_sources: tailwindcss_oxide::scanner: enter
+2026-04-07T04:04:15.871497Z  INFO get_globs:discover_sources: tailwindcss_oxide::scanner: exit
+2026-04-07T04:04:15.876193Z  INFO get_globs: tailwindcss_oxide::scanner: exit

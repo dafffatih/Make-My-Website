@@ -1,6 +1,7 @@
 "use client";
 
 import { updateProjectStage } from "@/app/actions/project";
+import { Blocks, BellRing } from "lucide-react";
 
 export default function Stage3Development({ project }: { project: any }) {
   if (!project) return null;
@@ -16,7 +17,7 @@ export default function Stage3Development({ project }: { project: any }) {
     <div className="p-8 pb-32 h-full flex flex-col items-center justify-center text-center space-y-6">
       <div className="w-24 h-24 rounded-full bg-surface-container flex items-center justify-center relative shadow-xl shadow-black/20">
         <div className="absolute inset-0 rounded-full border-t-2 border-r-2 border-primary animate-spin opacity-50"></div>
-        <span className="material-symbols-outlined text-4xl text-primary animate-pulse w-full h-full flex items-center justify-center" style={{ fontVariationSettings: "'FILL' 0" }}>code_blocks</span>
+        <Blocks className="text-4xl text-primary animate-pulse w-10 h-10" />
       </div>
 
       <div className="max-w-md space-y-3 pt-4">
@@ -28,7 +29,7 @@ export default function Stage3Development({ project }: { project: any }) {
 
       <div className="mt-8 p-4 bg-primary/10 border border-primary/20 rounded-2xl max-w-sm">
         <p className="text-xs text-primary font-bold tracking-widest uppercase flex items-center justify-center gap-2">
-          <span className="material-symbols-outlined text-sm">notifications_active</span>
+          <BellRing className="w-4 h-4" />
           Please check back regularly
         </p>
       </div>

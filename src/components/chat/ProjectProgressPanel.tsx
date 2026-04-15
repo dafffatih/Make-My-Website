@@ -1,6 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { 
+  Settings, 
+  Hourglass, 
+  Code, 
+  Rocket, 
+  FileEdit, 
+  CheckCircle2, 
+  ArrowLeft, 
+  Check 
+} from "lucide-react";
 import Stage1Setup from "./stages/Stage1Setup";
 import Stage2Payment from "./stages/Stage2Payment";
 import Stage3Development from "./stages/Stage3Development";
@@ -8,11 +18,11 @@ import Stage4Finalize from "./stages/Stage4Finalize";
 import Stage5Revision from "./stages/Stage5Revision";
 
 const STAGES = [
-  { label: "Project Setup", icon: "settings", num: 1 },
-  { label: "Deposit Payment", icon: "hourglass_top", num: 2 },
-  { label: "In Development", icon: "code", num: 3 },
-  { label: "Final Delivery", icon: "rocket_launch", num: 4 },
-  { label: "Revisions", icon: "edit_note", num: 5 },
+  { label: "Project Setup", icon: Settings, num: 1 },
+  { label: "Deposit Payment", icon: Hourglass, num: 2 },
+  { label: "In Development", icon: Code, num: 3 },
+  { label: "Final Delivery", icon: Rocket, num: 4 },
+  { label: "Revisions", icon: FileEdit, num: 5 },
 ];
 
 export default function ProjectProgressPanel({ 
@@ -46,7 +56,7 @@ export default function ProjectProgressPanel({
         return (
           <div className="p-8 text-center text-white flex flex-col items-center justify-center h-full">
             <div className="w-16 h-16 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center mb-4">
-              <span className="material-symbols-outlined text-3xl">task_alt</span>
+              <CheckCircle2 className="w-8 h-8" />
             </div>
             <h3 className="text-xl font-bold">Project Completed!</h3>
             <p className="mt-2 text-sm text-zinc-400 max-w-sm">
@@ -66,7 +76,7 @@ export default function ProjectProgressPanel({
         className="absolute top-4 left-4 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface-variant hover:text-white"
         title="Go back to projects list"
       >
-        <span className="material-symbols-outlined text-sm">arrow_back</span>
+        <ArrowLeft className="w-4 h-4" />
       </button>
 
       <div className="w-full px-8 pt-12 pb-6 border-b border-outline-variant/10">
@@ -91,9 +101,9 @@ export default function ProjectProgressPanel({
                   ${isUpcoming ? 'bg-surface-container-highest text-on-surface-variant/40' : ''}
                 `}>
                   {isCompleted ? (
-                    <span className="material-symbols-outlined text-[14px]" style={{ fontVariationSettings: "'FILL' 1" }}>check</span>
+                    <Check className="w-3 h-3" />
                   ) : (
-                    <span className={`material-symbols-outlined text-[14px] ${isActive ? 'animate-pulse' : ''}`}>{step.icon}</span>
+                    <step.icon className={`w-3.5 h-3.5 ${isActive ? 'animate-pulse' : ''}`} />
                   )}
                 </div>
                 <span className={`

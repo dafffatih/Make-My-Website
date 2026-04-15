@@ -4,10 +4,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
+import { 
+  Users, 
+  MessageSquare, 
+  ShieldCheck, 
+  ChevronRight, 
+  ChevronLeft, 
+  Home, 
+  LogOut 
+} from "lucide-react";
 
 const ADMIN_NAV = [
-  { name: "Users", href: "/admin/users", icon: "group" },
-  { name: "Chat", href: "/admin/chat", icon: "chat" },
+  { name: "Users", href: "/admin/users", icon: Users },
+  { name: "Chat", href: "/admin/chat", icon: MessageSquare },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -28,7 +37,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         <div className="h-16 flex items-center px-4 border-b border-outline-variant/10 gap-3">
           <Link href="/" className="flex items-center gap-3 group min-w-0">
             <div className="w-9 h-9 rounded-xl bg-[linear-gradient(135deg,#c3c0ff_0%,#4f46e5_100%)] flex items-center justify-center shadow-lg shadow-primary/20 shrink-0">
-              <span className="material-symbols-outlined text-white text-lg">shield_person</span>
+              <ShieldCheck className="text-white w-5 h-5" />
             </div>
             {!sidebarCollapsed && (
               <span className="text-sm font-extrabold tracking-tight text-white truncate">Admin Panel</span>
@@ -50,12 +59,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                     : "text-on-surface-variant hover:bg-surface-container-high/50 hover:text-white"
                 }`}
               >
-                <span
-                  className="material-symbols-outlined text-xl"
-                  style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}
-                >
-                  {item.icon}
-                </span>
+                <item.icon
+                  className="w-5 h-5"
+                  fill={isActive ? "currentColor" : "none"}
+                />
                 {!sidebarCollapsed && <span>{item.name}</span>}
               </Link>
             );
@@ -68,16 +75,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
             className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm font-semibold text-on-surface-variant hover:bg-surface-container-high/50 hover:text-white transition-colors"
           >
-            <span className="material-symbols-outlined text-xl">
-              {sidebarCollapsed ? "chevron_right" : "chevron_left"}
-            </span>
+            {sidebarCollapsed ? <ChevronRight className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}
             {!sidebarCollapsed && <span>Collapse</span>}
           </button>
           <Link
             href="/"
             className="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm font-semibold text-on-surface-variant hover:bg-surface-container-high/50 hover:text-white transition-colors"
           >
-            <span className="material-symbols-outlined text-xl">home</span>
+            <Home className="w-5 h-5" />
             {!sidebarCollapsed && <span>Back to Site</span>}
           </Link>
         </div>
@@ -124,7 +129,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                       onClick={() => signOut({ callbackUrl: '/' })}
                       className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-sm font-semibold text-red-400 hover:bg-red-500/10 transition-colors"
                     >
-                      <span className="material-symbols-outlined text-[18px]">logout</span>
+                      <LogOut className="w-4 h-4" />
                       Logout
                     </button>
                   </div>

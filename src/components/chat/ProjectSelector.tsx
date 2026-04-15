@@ -1,4 +1,5 @@
 "use client";
+import { ClipboardList, ChevronRight } from "lucide-react";
 
 export default function ProjectSelector({
   projects,
@@ -12,7 +13,7 @@ export default function ProjectSelector({
   return (
     <div className="flex flex-col items-center justify-center h-full p-8 text-center space-y-6">
       <div className="w-16 h-16 rounded-2xl bg-[linear-gradient(135deg,#c3c0ff_0%,#4f46e5_100%)] flex items-center justify-center shadow-lg shadow-primary/20 mb-4">
-        <span className="material-symbols-outlined text-white text-3xl">assignment</span>
+        <ClipboardList className="text-white w-8 h-8" />
       </div>
       <h2 className="text-2xl font-extrabold text-white tracking-tight">Your Projects</h2>
       <p className="text-on-surface-variant text-sm max-w-sm">
@@ -36,9 +37,7 @@ export default function ProjectSelector({
                   Stage: {p.status}
                 </span>
               </div>
-              <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">
-                chevron_right
-              </span>
+              <ChevronRight className="w-5 h-5 text-on-surface-variant group-hover:text-primary transition-colors" />
             </button>
           ))}
         </div>

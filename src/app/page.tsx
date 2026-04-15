@@ -8,6 +8,15 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { 
+  Gauge, 
+  ArrowRight, 
+  CheckCircle2, 
+  MessageCircle, 
+  Mail, 
+  Globe, 
+  Camera 
+} from "lucide-react";
 
 export default function Home() {
   return (
@@ -53,7 +62,7 @@ export default function Home() {
               <div className="absolute -top-10 -left-10 bg-surface-container-highest p-6 rounded-xl border border-outline-variant/10 backdrop-blur-xl shadow-2xl">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-lg bg-primary/20 flex items-center justify-center">
-                    <span className="material-symbols-outlined text-primary">speed</span>
+                    <Gauge className="text-primary w-6 h-6" />
                   </div>
                   <div>
                     <div className="text-[0.6875rem] uppercase tracking-widest text-on-surface-variant font-bold">Performance</div>
@@ -79,7 +88,7 @@ export default function Home() {
               </div>
               <a className="group flex items-center gap-3 text-on-surface-variant hover:text-white transition-colors pb-2 border-b border-outline-variant/30" href="#">
                 <span className="font-bold tracking-widest uppercase text-xs">Explore Portfolio</span>
-                <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
@@ -144,27 +153,27 @@ export default function Home() {
                     </div>
                     <ul className="space-y-4 mb-8 flex-grow">
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">1 page (landing page)</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Responsive design</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Clean UI/UX</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Basic SEO</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Contact form / CTA setup</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Fast loading</span>
                       </li>
                     </ul>
@@ -191,27 +200,27 @@ export default function Home() {
                     </div>
                     <ul className="space-y-4 mb-8 flex-grow">
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Up to 3 pages (Home, About, Contact)</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Responsive design (mobile-friendly)</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Basic UI/UX design</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Contact form integration</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Basic SEO setup</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Fast loading speed</span>
                       </li>
                     </ul>
@@ -239,31 +248,31 @@ export default function Home() {
                     </div>
                     <ul className="space-y-4 mb-8 flex-grow">
                       <li className="flex items-start gap-2 text-on-surface">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" fill="currentColor" />
                         <span className="text-xs leading-tight">Up to 7 pages</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" fill="currentColor" />
                         <span className="text-xs leading-tight">Custom UI/UX design</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" fill="currentColor" />
                         <span className="text-xs leading-tight">Responsive design (mobile & tablet)</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" fill="currentColor" />
                         <span className="text-xs leading-tight">CMS integration (WordPress / similar)</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" fill="currentColor" />
                         <span className="text-xs leading-tight">SEO optimization</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" fill="currentColor" />
                         <span className="text-xs leading-tight">Social media & Google Maps</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" fill="currentColor" />
                         <span className="text-xs leading-tight">Basic performance optimization</span>
                       </li>
                     </ul>
@@ -290,31 +299,31 @@ export default function Home() {
                     </div>
                     <ul className="space-y-4 mb-8 flex-grow">
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Unlimited pages & Fully custom design</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Advanced UI/UX</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">CMS or custom admin dashboard</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">E-commerce functionality (optional)</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Payment gateway integration</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Advanced SEO & High performance</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">API integration</span>
                       </li>
                     </ul>
@@ -341,23 +350,23 @@ export default function Home() {
                     </div>
                     <ul className="space-y-4 mb-8 flex-grow">
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Fully customizable (you choose everything)</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Flexible design & functionality</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Optional integrations</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Scalable architecture</span>
                       </li>
                       <li className="flex items-start gap-2 text-on-surface-variant">
-                        <span className="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                        <CheckCircle2 className="text-primary w-4 h-4 mt-0.5" />
                         <span className="text-xs leading-tight">Consultation-based development</span>
                       </li>
                     </ul>
@@ -392,7 +401,7 @@ export default function Home() {
                 <div className="space-y-8">
                   <Link href="/chat" className="flex items-center gap-6 p-6 rounded-2xl bg-surface-container hover:bg-surface-container-high transition-all cursor-pointer">
                     <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="material-symbols-outlined text-primary">chat_bubble</span>
+                      <MessageCircle className="text-primary w-6 h-6" />
                     </div>
                     <div>
                       <div className="text-white font-bold mb-1">Live Chat</div>
@@ -401,7 +410,7 @@ export default function Home() {
                   </Link>
                   <div className="flex items-center gap-6 p-6 rounded-2xl bg-surface-container hover:bg-surface-container-high transition-all">
                     <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
-                      <span className="material-symbols-outlined text-primary">mail</span>
+                      <Mail className="text-primary w-6 h-6" />
                     </div>
                     <div>
                       <div className="text-white font-bold mb-1">Email Inquiry</div>
@@ -448,10 +457,10 @@ export default function Home() {
             <h4 className="text-white text-xs font-bold mb-6 tracking-[0.2em] uppercase">Social</h4>
             <div className="flex gap-4">
               <div className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all cursor-pointer">
-                <span className="material-symbols-outlined text-base">public</span>
+                <Globe className="w-5 h-5" />
               </div>
               <div className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-primary hover:text-on-primary transition-all cursor-pointer">
-                <span className="material-symbols-outlined text-base">camera</span>
+                <Camera className="w-5 h-5" />
               </div>
             </div>
           </div>

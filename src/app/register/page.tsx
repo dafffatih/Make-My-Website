@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Globe, Eye, EyeOff, Check } from "lucide-react";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -69,7 +70,7 @@ export default function RegisterPage() {
         <div className="flex flex-col items-center mb-10">
           <Link href="/" className="flex items-center gap-3 group mb-8">
             <div className="w-10 h-10 rounded-xl bg-[linear-gradient(135deg,#c3c0ff_0%,#4f46e5_100%)] flex items-center justify-center shadow-lg shadow-primary/20 group-hover:scale-105 transition-transform">
-              <span className="material-symbols-outlined text-white text-xl">public</span>
+              <Globe className="text-white w-6 h-6" />
             </div>
             <span className="text-2xl font-extrabold tracking-tighter text-white">Make My Website</span>
           </Link>
@@ -130,9 +131,7 @@ export default function RegisterPage() {
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-white transition-colors p-1"
                     tabIndex={-1}
                   >
-                    <span className="material-symbols-outlined text-xl">
-                      {showPassword ? "visibility_off" : "visibility"}
-                    </span>
+                    {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
               </div>
@@ -155,9 +154,7 @@ export default function RegisterPage() {
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-white transition-colors p-1"
                     tabIndex={-1}
                   >
-                    <span className="material-symbols-outlined text-xl">
-                      {showConfirmPassword ? "visibility_off" : "visibility"}
-                    </span>
+                    {showConfirmPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                   </button>
                 </div>
               </div>
@@ -167,7 +164,7 @@ export default function RegisterPage() {
               <label className="flex items-center gap-3">
                 <div className="relative flex items-center justify-center">
                   <input type="checkbox" className="peer w-5 h-5 rounded appearance-none border border-outline-variant/30 bg-surface-container-high/50 checked:bg-primary checked:border-primary transition-all cursor-pointer" required />
-                  <span className="material-symbols-outlined absolute text-[14px] text-white opacity-0 peer-checked:opacity-100 pointer-events-none">check</span>
+                  <Check className="absolute w-3.5 h-3.5 text-white opacity-0 peer-checked:opacity-100 pointer-events-none" />
                 </div>
                 <span className="text-xs text-on-surface-variant">
                   I agree to the <a href="#" className="text-primary hover:underline">Terms of Service</a> and <a href="#" className="text-primary hover:underline">Privacy Policy</a>.
